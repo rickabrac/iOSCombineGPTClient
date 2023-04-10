@@ -1,4 +1,4 @@
-# iPhone GPT3 Chat client implemented using a Flux (Reactive) Architecture in Combine
+# GPT3 Chat client using a Flux (Reactive) Architecture implemented in Combine
 
 ## Description
 
