@@ -1,4 +1,4 @@
-# iOS GPT3 Chat client using a Flux Architecture in Combine
+# iOS GPT3 Chat client using the Flux Architecture
 
 ## Description
 
