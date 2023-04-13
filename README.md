@@ -6,13 +6,9 @@ This app uses unidirectional data flow to manage state and is implemented in Com
 
 • State machine (Store.swift) adapted from this article: https://obscuredpixels.com/managing-view-state-with-combine
 
-## Bugs (Xcode 13.2.1)
+## To-Do
 
-• SwiftUI autoscrolling not working
-• Combine-based Router is still a work in progress.
+• SwiftUI autoscrolling (not working in Xcode 13.2.1)
+• Combine-based routing/coordination
+• Add prompt for GPT3 API key 
 
-## Modules (Frameworks)
-
-• GPTCore (GPTAPI, Store, Extensions, Protocols, MainCoordinator, AppDelegate, SceneDelegate, Assets, Info, Splash)
-• GPTChat (ChatAPI, ChatStore, Chat*View*)
-• GPTImage (ImageStore, Image*View*)
