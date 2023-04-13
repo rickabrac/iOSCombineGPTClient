@@ -1,5 +1,5 @@
 //
-//  MockGPT3API.swift
+//  MockChatAPI.swift
 //  FluxGPTChatTests
 //  Created by Rick Tyler
 //
@@ -8,7 +8,7 @@
 import Foundation
 @testable import FluxGPTChat
 
-class MockGPT3API: GPT3APIProtocol {
+class MockChatAPI: ChatAPIProtocol {
 	private let cannedResponseFileName: String
 	private let cannedResponseFileExtension: String
 	

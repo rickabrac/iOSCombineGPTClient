@@ -12,7 +12,7 @@ import Combine
 class ChatStoreTests: XCTestCase {
 	
 	let chat = ChatStore()
-	let api = MockGPT3API("TestResponse.json")
+	let api = MockChatAPI("TestResponse.json")
 	let responseStreamed = XCTestExpectation()
 	let input = "test"
 	let output = "There once was a man from Peru\nWho dreamed of eating a big kangaroo\nHe hopped and he skipped\nBut the kangaroo flipped\nAnd said, \"I\'m not your average stew!\""
@@ -113,5 +113,47 @@ class ChatStoreTests: XCTestCase {
 		await chat.store.dispatch(action: .clearError)
 		let clearedShowingError = await chat.store.state.showingError
 		XCTAssertEqual(clearedShowingError, false)
+	}
+	
+	func testChatStoreSetAPI() async throws {
+		let input = GPTChatAPI(key: "?")
+		await chat.store.dispatch(action: .setAPI(input))
+		guard let _ = await chat.store.state.api else {
+			XCTFail()
+			return
+		}
+//		XCTAssertEqual(input, output)
+	}
+	
+	func testChatClearAPIKey() async throws {
+		await chat.store.dispatch(action: .setAPIKey(input))
+		guard let _ = await chat.store.state.apiKey else {
+			XCTFail()
+			return
+		}
+		await chat.store.dispatch(action: .clearAPIKey)
+		guard let _ = await chat.store.state.apiKey else {
+			return
+		}
+		XCTFail()
+	}
+	
+	func testChatSetTestAPIKey() async throws {
+		await chat.store.dispatch(action: .setTestAPIKey(input))
+		if await chat.store.state.testAPIKey.count == 0 {
+			XCTFail()
+			return
+		}
+		let output = await chat.store.state.testAPIKey
+		XCTAssertEqual(input, output)
+	}
+	
+	func testChatSetAPIKey() async throws {
+		await chat.store.dispatch(action: .setAPIKey(input))
+		guard let output = await chat.store.state.apiKey else {
+			XCTFail()
+			return
+		}
+		XCTAssertEqual(input, output)
 	}
 }

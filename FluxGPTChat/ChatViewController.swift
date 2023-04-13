@@ -61,13 +61,13 @@ class ChatViewController: UIViewController {
 		}
 		
 		Task {
-			await store.bindStateChangeHandler(refreshView, cancellables: &ChatViewController.cancellables)
+			await store.bindStateObserver(refreshView, cancellables: &ChatViewController.cancellables)
 		}
 		
 		view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
 		
 		// title
-		myTitle.text = "GPT3 Chat (UIKit)"
+		myTitle.text = "UIKit GPT Chat"
 		myTitle.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
 		myTitle.textAlignment = .center
 		myTitle.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
@@ -131,9 +131,9 @@ class ChatViewController: UIViewController {
 			prompt.heightAnchor.constraint(equalToConstant: 43)
 		])
 
-		// UITextField clear button does not not appear to work in my version of Xcode (13.2.1)
-		// when presented from SwiftUI using UIViewControllerRepresentable, so this is a workaround
-		// to get the clear button to work.
+		// The UITextField clear button does not not appear to work in my version of Xcode (13.2.1)
+		// presented from a SwiftUI view. This is my workaround, deprecation warnings and all.
+		
 		let clearButton = UIButton(type: .system)
 		clearButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
 		clearButton.setTitle("", for: .normal)
@@ -284,7 +284,10 @@ extension ChatViewController: UITextFieldDelegate {
 		spinner.isHidden = false
 		response.text = ""
 		Task {
-			let api = GPT3API(apiKey: "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")
+			guard let apiKey = ProcessInfo.processInfo.environment["GPT3_API_KEY"] else {
+				fatalError("You must assign a valid GPT3 API key to GPT3_API_KEY in your Xcode environment (under Product > Scheme > Edit Scheme...)")
+			}
+			let api = GPTChatAPI(key: apiKey)
 			let stream = try! await api.fetchResponseStream(prompt: prompt, store: chat.store)
 			await chat.store.dispatch(action: .setPrompt(prompt))
 			await chat.store.dispatch(action: .setStream(stream))
@@ -297,4 +300,13 @@ extension ChatViewController: UITextFieldDelegate {
 	func textFieldShouldClear(_ textField: UITextField) -> Bool {
 		return true
 	}
+}
+
+//  MARK: UIViewControllerRepresentable wrapper
+
+struct ChatViewControllerUIView: UIViewControllerRepresentable {
+	func makeUIViewController(context: Context) -> ChatViewController {
+		return ChatViewController()
+	}
+	func updateUIViewController(_ uiViewController: ChatViewController, context: Context) { }
 }

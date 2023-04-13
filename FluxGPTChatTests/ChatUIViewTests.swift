@@ -8,7 +8,7 @@
 import XCTest
 import SnapshotTesting
 import SwiftUI
-import UIKit
+import Combine
 @testable import FluxGPTChat
 
 class ChatUIViewTests: XCTestCase {
@@ -29,14 +29,14 @@ class ChatUIViewTests: XCTestCase {
 	
 	func asyncSetUpWithError(_ cannedResponseFileName: String) async throws {
 		let store = ChatStore().store
-		let api = MockGPT3API("TestResponse.json")
+		let api = MockChatAPI("TestResponse.json")
 		let stream = try await api.fetchResponseStream(prompt: input, store: store)
 		await  store.dispatch(action: .setPrompt(input))
 		await  store.dispatch(action: .setStream(stream))
 		while await store.state.stream != nil {
 			await  store.dispatch(action: .streamResponse(stream, store.state.response))
 		}
-		let chatView = await ChatUIView(store: store, prompt: input)
+		let chatView = await ChatUIView(router: newRouterStore(), store: store, prompt: input)
 		vc = await UIHostingController(rootView: chatView)
 		await vc.loadView()
 	}
@@ -63,3 +63,24 @@ class ChatUIViewTests: XCTestCase {
 		wait(for: [snapshotTaken], timeout: 10)
 	}
 }
+
+//class MockRouter: Router {
+//	var window: UIWindow
+//	var parent: Router?
+//	var store: RouterStoreType
+//	var child: [String : Router]
+//	var view: [String : UIViewController]
+//	var cancellables: Set<AnyCancellable>
+//
+//	required init(_ window: UIWindow, path: String, parent: Router?, store: RouterStoreType) {
+//		self.parent = nil
+//		self.store = newRouterStore()
+//		self.child = [:]
+//	}
+//
+//	func start() {
+//	}
+//
+//	func route() {
+//	}
+//}

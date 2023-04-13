@@ -27,7 +27,7 @@ class ChatViewControllerTests: XCTestCase {
 	
 	func asyncSetUpWithError(_ cannedResponseFileName: String) async throws {
 		chat = ChatStore()
-		let api = MockGPT3API(cannedResponseFileName)
+		let api = MockChatAPI(cannedResponseFileName)
 		guard let chat = chat else {
 			XCTFail()
 			return

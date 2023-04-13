@@ -1,5 +1,5 @@
 //
-//  GPT3API.swift
+//  GPTChatAPI.swift
 //  FluxGPTChat
 //  Created by Rick Tyler
 //
@@ -8,19 +8,23 @@
 import Foundation
 import Combine
 
-protocol GPT3APIProtocol {
+protocol ChatAPIProtocol {
 	func fetchResponseStream(prompt: String, store: ChatStoreType) async throws -> AsyncStream<String>
 }
 
-class GPT3API: GPT3APIProtocol {
+class GPTChatAPI: ChatAPIProtocol {
 	
-	private let systemMessage: Message
-	private let temperature: Double
-	private let model: String
+	private let model = "gpt-3.5-turbo"
+	private let systemMessage = Message(role: "system", content: "You are my helpful AI assistant.")
+	private let temperature = 0.5
 	private var historyList = [Message]()
-	private let apiKey: String
 	private let urlSession = URLSession.shared
 	private var cancellables = Set<AnyCancellable>()
+	private var key = ""
+	
+	init(key: String) {
+		self.key = key
+	}
 	
 	private var urlRequest: URLRequest {
 		var urlRequest = URLRequest(url: URL(string: "https://api.openai.com/v1/chat/completions")!)
@@ -32,7 +36,7 @@ class GPT3API: GPT3APIProtocol {
 	private var headers: [String:String] {
 		[
 			"Content-type" : "application/json",
-			"Authorization" : "Bearer \(apiKey)",
+			"Authorization" : "Bearer \(self.key)",
 		]
 	}
 	
@@ -43,25 +47,7 @@ class GPT3API: GPT3APIProtocol {
 	}()
 	
 	private func generateMessages(from text: String) -> [Message] {
-//		var messages = [systemMessage] + historyList + [Message(role: "user", content: text)]
-//		if messages.contentCount > 4000 * 4 {
-//			_ = historyList.dropFirst()
-//			messages = generateMessages(from: text)
-//		}
-//		return messages
 		return [systemMessage] + [Message(role: "user", content: text)]
-	}
-	
-	init(
-		apiKey: String,
-		model: String = "gpt-3.5-turbo",
-		systemPrompt: String = "Your are a helpful assistant",
-		temperature: Double = 0.5
-	) {
-		self.apiKey = apiKey
-		self.model = model
-		self.systemMessage = .init(role: "system", content: systemPrompt)
-		self.temperature = temperature
 	}
 	
 	private func jsonBody(prompt: String, stream: Bool = true) throws -> Data {
@@ -130,19 +116,7 @@ class GPT3API: GPT3APIProtocol {
 	}
 }
 
-// MARK: Array extension
-
-extension Array where Element == Message {
-	var contentCount: Int { reduce(0, { $0 + $1.content!.count }) }
-}
-
-// MARK: CustomNSError conformance
-	
-extension String: CustomNSError {
-	public var errorUserInfo: [String : Any] { [ NSLocalizedDescriptionKey: self ] }
-}
-
-// MARK: GPT3API Models
+// MARK: GPTAPI Models
 
 enum HTTPError: LocalizedError {
 	case statusCode

@@ -8,20 +8,53 @@
 import SwiftUI
 
 struct ChatUIView: View {
+	@StateObject var router: RouterStoreType
 	@StateObject var store: ChatStoreType
-	@FocusState private var isFocused: Bool
 	@SwiftUI.State private var prompt = ""
 	@SwiftUI.State private var sharingResponse = false
 	@SwiftUI.State private var showingError = false
+	@FocusState private var isFocused: Bool
 	@Environment(\.colorScheme) var colorScheme: ColorScheme
-	let api = GPT3API(apiKey: "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")
+//	let api: ChatAPI = ChatAPI()
 	
-	init(store: ChatStoreType = ChatStore.store, prompt: String = "") {
+	init(router: RouterStoreType, store: ChatStoreType = ChatStore.store, prompt: String = "") {
+		self._router = StateObject(wrappedValue: router)
 		self._store = StateObject(wrappedValue: store)
 		self._prompt = .init(initialValue: prompt)
+		Task {
+			await store.dispatch(action: .setRouter(router))
+			await store.dispatch(action: .getAPIKey(router))
+		}
 	}
 	
 	private func progressView() -> some View {
+		if let signal = router.state.signal, let message = router.state.message {
+			if signal == "getAPIKey", message.starts(with: "apiKey:") {
+				if let apiKey = message.components(separatedBy: ":").last {
+					Task {
+						await store.dispatch(action: .setAPIKey(apiKey))
+						await router.dispatch(action: .clearSignal)
+					}
+				}
+			} else {
+				fatalError("ChatUIView.progressView: unknown router message (\(message))")
+			}
+		}
+		guard let apiKey = store.state.apiKey else { // }, router.state.event == nil else {
+			guard let _ = router.state.signal else {
+				Task {
+					await store.dispatch(action: .getAPIKey(router))
+				}
+				return AnyView(EmptyView())
+			}
+			return AnyView(EmptyView())
+		}
+		guard let api = store.state.api else {
+			Task {
+				await store.dispatch(action: .setAPI(GPTChatAPI(key: apiKey)))
+			}
+			return AnyView(EmptyView())
+		}
 		if store.state.prompt.count > 0, store.state.stream == nil {
 			return AnyView(
 				ProgressView()
@@ -48,10 +81,14 @@ struct ChatUIView: View {
 				}
 			)
 		} else if store.state.stream == nil {
-			return AnyView(Text(""))
+			return AnyView(EmptyView())
 		} else {
 			Task {
-				await store.dispatch(action: .streamResponse(store.state.stream!, store.state.response))
+				guard let stream = store.state.stream else {
+					return
+				}
+//				await store.dispatch(action: .streamResponse(store.state.stream!, store.state.response))
+				await store.dispatch(action: .streamResponse(stream, store.state.response))
 			}
 		}
 		return AnyView(Text(""))
@@ -169,7 +206,7 @@ struct ChatUIView: View {
 			.navigationBarTitleDisplayMode(.inline)
 			.toolbar {
 				ToolbarItem(placement: .principal) {
-					Text("GPT3 Chat (SwiftUI)")
+					Text("SwiftUI GPT Chat")
 						.font(.system(size: 17, weight: .semibold, design: .default))
 						.accessibilityAddTraits(.isHeader)
 				}
@@ -247,16 +284,6 @@ struct ChatUIView: View {
 
 		func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
 			// nothing to do here
-		}
-	}
-}
-
-extension View {
-	func phoneOnlyStackNavigationView() ->some View {
-		if UIDevice.current.userInterfaceIdiom == .phone {
-			return AnyView(self.navigationViewStyle(StackNavigationViewStyle()))
-		} else {
-			return AnyView(self)
 		}
 	}
 }
