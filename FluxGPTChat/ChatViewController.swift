@@ -287,7 +287,7 @@ extension ChatViewController: UITextFieldDelegate {
 			guard let apiKey = ProcessInfo.processInfo.environment["GPT3_API_KEY"] else {
 				fatalError("You must assign a valid GPT3 API key to GPT3_API_KEY in your Xcode environment (under Product > Scheme > Edit Scheme...)")
 			}
-			let api = GPTChatAPI(key: apiKey)
+			let api = ChatGPTAPI(key: apiKey)
 			let stream = try! await api.fetchResponseStream(prompt: prompt, store: chat.store)
 			await chat.store.dispatch(action: .setPrompt(prompt))
 			await chat.store.dispatch(action: .setStream(stream))

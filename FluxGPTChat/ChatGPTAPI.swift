@@ -12,7 +12,7 @@ protocol ChatAPIProtocol {
 	func fetchResponseStream(prompt: String, store: ChatStoreType) async throws -> AsyncStream<String>
 }
 
-class GPTChatAPI: ChatAPIProtocol {
+class ChatGPTAPI: ChatAPIProtocol {
 	
 	private let model = "gpt-3.5-turbo"
 	private let systemMessage = Message(role: "system", content: "You are my helpful AI assistant.")

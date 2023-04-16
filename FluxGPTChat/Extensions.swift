@@ -35,15 +35,8 @@ extension UIViewController {
 	}
 }
 
-//  MARK: Array extension
-
-extension Array where Element == Message {
-	var contentCount: Int { reduce(0, { $0 + $1.content!.count }) }
-}
-
 //  MARK: String CustomNSError conformance
-	
+
 extension String: CustomNSError {
 	public var errorUserInfo: [String : Any] { [ NSLocalizedDescriptionKey: self ] }
 }
-

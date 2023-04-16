@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D73105F29EA19A600884CAD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105C29EA19A600884CAD /* Store.swift */; };
+		1D73106029EA19A600884CAD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105D29EA19A600884CAD /* Router.swift */; };
+		1D73106129EA19A600884CAD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105E29EA19A600884CAD /* Extensions.swift */; };
 		1D9397A329E893FA00E496B8 /* MemoryAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9397A229E893FA00E496B8 /* MemoryAddress.swift */; };
-		1DB9915B29E36672005E5C75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9915A29E36672005E5C75 /* SceneDelegate.swift */; };
-		1DB9919729E36746005E5C75 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918829E36745005E5C75 /* Store.swift */; };
-		1DB9919929E36746005E5C75 /* GPTChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918A29E36746005E5C75 /* GPTChatAPI.swift */; };
+		1DB9919929E36746005E5C75 /* ChatGPTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918A29E36746005E5C75 /* ChatGPTAPI.swift */; };
 		1DB9919A29E36746005E5C75 /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918B29E36746005E5C75 /* ChatStore.swift */; };
 		1DB9919C29E36746005E5C75 /* ChatUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918D29E36746005E5C75 /* ChatUIView.swift */; };
-		1DB9919F29E36746005E5C75 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9919029E36746005E5C75 /* Extensions.swift */; };
 		1DB991A329E36746005E5C75 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9919429E36746005E5C75 /* ChatViewController.swift */; };
 		1DB991A529E36746005E5C75 /* ChatTabUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9919629E36746005E5C75 /* ChatTabUIView.swift */; };
 		1DB991A829E3692D005E5C75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB991A629E3692D005E5C75 /* AppDelegate.swift */; };
@@ -27,7 +27,6 @@
 		1DB9920529E4B866005E5C75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB9920429E4B865005E5C75 /* Assets.xcassets */; };
 		1DB9920829E4BC03005E5C75 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 1DB9920729E4BC03005E5C75 /* SnapshotTesting */; };
 		1DB9920A29E4D57F005E5C75 /* SplashUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9920929E4D57F005E5C75 /* SplashUIView.swift */; };
-		1DB9920C29E718DE005E5C75 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9920B29E718DE005E5C75 /* Router.swift */; };
 		1DB9920E29E78D5F005E5C75 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9920D29E78D5F005E5C75 /* MainRouter.swift */; };
 		1DB9921029E78D7A005E5C75 /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9920F29E78D7A005E5C75 /* ChatRouter.swift */; };
 /* End PBXBuildFile section */
@@ -43,16 +42,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D73105C29EA19A600884CAD /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		1D73105D29EA19A600884CAD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		1D73105E29EA19A600884CAD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1D9397A229E893FA00E496B8 /* MemoryAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryAddress.swift; sourceTree = "<group>"; };
 		1DB9915529E36672005E5C75 /* FluxGPTChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluxGPTChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DB9915A29E36672005E5C75 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1DB9916629E36675005E5C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DB9916B29E36676005E5C75 /* FluxGPTChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FluxGPTChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DB9918829E36745005E5C75 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		1DB9918A29E36746005E5C75 /* GPTChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPTChatAPI.swift; sourceTree = "<group>"; };
+		1DB9918A29E36746005E5C75 /* ChatGPTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatGPTAPI.swift; sourceTree = "<group>"; };
 		1DB9918B29E36746005E5C75 /* ChatStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
 		1DB9918D29E36746005E5C75 /* ChatUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUIView.swift; sourceTree = "<group>"; };
-		1DB9919029E36746005E5C75 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1DB9919429E36746005E5C75 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		1DB9919629E36746005E5C75 /* ChatTabUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTabUIView.swift; sourceTree = "<group>"; };
 		1DB991A629E3692D005E5C75 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +65,6 @@
 		1DB9920029E4B797005E5C75 /* TestResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestResponse.json; sourceTree = "<group>"; };
 		1DB9920429E4B865005E5C75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DB9920929E4D57F005E5C75 /* SplashUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUIView.swift; sourceTree = "<group>"; };
-		1DB9920B29E718DE005E5C75 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1DB9920D29E78D5F005E5C75 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		1DB9920F29E78D7A005E5C75 /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,22 +110,21 @@
 		1DB9915729E36672005E5C75 /* FluxGPTChat */ = {
 			isa = PBXGroup;
 			children = (
-				1DB9918829E36745005E5C75 /* Store.swift */,
-				1DB9919029E36746005E5C75 /* Extensions.swift */,
-				1DB9920B29E718DE005E5C75 /* Router.swift */,
+				1DB991A629E3692D005E5C75 /* AppDelegate.swift */,
+				1DB991ED29E4B5DC005E5C75 /* LaunchScreen.storyboard */,
+				1DB9916629E36675005E5C75 /* Info.plist */,
+				1DB9920429E4B865005E5C75 /* Assets.xcassets */,
+				1D73105C29EA19A600884CAD /* Store.swift */,
+				1D73105E29EA19A600884CAD /* Extensions.swift */,
+				1D73105D29EA19A600884CAD /* Router.swift */,
 				1DB9920D29E78D5F005E5C75 /* MainRouter.swift */,
 				1DB9920F29E78D7A005E5C75 /* ChatRouter.swift */,
-				1DB9918A29E36746005E5C75 /* GPTChatAPI.swift */,
+				1DB9918A29E36746005E5C75 /* ChatGPTAPI.swift */,
 				1DB9918B29E36746005E5C75 /* ChatStore.swift */,
 				1DB9920929E4D57F005E5C75 /* SplashUIView.swift */,
 				1DB9919629E36746005E5C75 /* ChatTabUIView.swift */,
 				1DB9918D29E36746005E5C75 /* ChatUIView.swift */,
 				1DB9919429E36746005E5C75 /* ChatViewController.swift */,
-				1DB991A629E3692D005E5C75 /* AppDelegate.swift */,
-				1DB9915A29E36672005E5C75 /* SceneDelegate.swift */,
-				1DB991ED29E4B5DC005E5C75 /* LaunchScreen.storyboard */,
-				1DB9916629E36675005E5C75 /* Info.plist */,
-				1DB9920429E4B865005E5C75 /* Assets.xcassets */,
 				1DB9920029E4B797005E5C75 /* TestResponse.json */,
 				1D9397A229E893FA00E496B8 /* MemoryAddress.swift */,
 			);
@@ -162,6 +159,8 @@
 			dependencies = (
 			);
 			name = FluxGPTChat;
+			packageProductDependencies = (
+			);
 			productName = FluxGPTChat;
 			productReference = 1DB9915529E36672005E5C75 /* FluxGPTChat.app */;
 			productType = "com.apple.product-type.application";
@@ -254,20 +253,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DB9919929E36746005E5C75 /* GPTChatAPI.swift in Sources */,
+				1DB9919929E36746005E5C75 /* ChatGPTAPI.swift in Sources */,
 				1DB9919A29E36746005E5C75 /* ChatStore.swift in Sources */,
 				1DB9920E29E78D5F005E5C75 /* MainRouter.swift in Sources */,
 				1DB9920A29E4D57F005E5C75 /* SplashUIView.swift in Sources */,
+				1D73106029EA19A600884CAD /* Router.swift in Sources */,
 				1DB991A829E3692D005E5C75 /* AppDelegate.swift in Sources */,
 				1DB991A529E36746005E5C75 /* ChatTabUIView.swift in Sources */,
-				1DB9915B29E36672005E5C75 /* SceneDelegate.swift in Sources */,
-				1DB9920C29E718DE005E5C75 /* Router.swift in Sources */,
-				1DB9919F29E36746005E5C75 /* Extensions.swift in Sources */,
+				1D73105F29EA19A600884CAD /* Store.swift in Sources */,
+				1D73106129EA19A600884CAD /* Extensions.swift in Sources */,
 				1D9397A329E893FA00E496B8 /* MemoryAddress.swift in Sources */,
 				1DB9921029E78D7A005E5C75 /* ChatRouter.swift in Sources */,
 				1DB991A329E36746005E5C75 /* ChatViewController.swift in Sources */,
 				1DB9919C29E36746005E5C75 /* ChatUIView.swift in Sources */,
-				1DB9919729E36746005E5C75 /* Store.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

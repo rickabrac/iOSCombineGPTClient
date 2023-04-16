@@ -4,17 +4,20 @@
 //  Created by Rick Tyler
 //
 //  SPDX-License-Identifier: MIT
-//
-//  SwiftUI root view tab controller 
 
 import SwiftUI
 
 struct ChatTabUIView: View {
-	var router: RouterStoreType
+	@StateObject var router: Router
 	@SwiftUI.State private var selectedTab = "SwiftUI"
 
-	init(router: RouterStoreType) {
-		self.router = router
+	init(router: Router) {
+		self._router = StateObject(wrappedValue: router)
+//DispatchQueue.main.async {
+//print("ChatTabUIView: router=\(router)")
+//}
+		let tabBarAppearance = UITabBar.appearance()
+		tabBarAppearance.unselectedItemTintColor = .gray
 	}
 	
     var body: some View {

@@ -116,7 +116,7 @@ class ChatStoreTests: XCTestCase {
 	}
 	
 	func testChatStoreSetAPI() async throws {
-		let input = GPTChatAPI(key: "?")
+		let input = ChatGPTAPI(key: "?")
 		await chat.store.dispatch(action: .setAPI(input))
 		guard let _ = await chat.store.state.api else {
 			XCTFail()

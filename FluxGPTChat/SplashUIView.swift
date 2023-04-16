@@ -3,24 +3,27 @@
 //  FluxGPTChat
 //  Created by Rick Tyler
 //
+//  SPDX-License-Identifier: MIT
 
 import SwiftUI
 
 struct SplashUIView: View {
-	var router: RouterStoreType
-//	@StateObject var store: ChatStoreType
+	@StateObject var router: Router
 	@SwiftUI.State private var promptingForAPIKey = false
 	@SwiftUI.State private var showingAPIKeyError = false
 	@SwiftUI.State private var apiKeyDefined = false
 	@SwiftUI.State private var apiKey = ""
 	@SwiftUI.State var okDisabled = false // true
-//	@Environment(\.dismiss) private var dismiss
 	
-//	init(store: ChatStoreType = ChatStore.store) {
-//		self._store = StateObject(wrappedValue: store)
-//	}
-	init(router: RouterStoreType) {
-		self.router = router
+	init(router: Router) {
+		self._router = StateObject(wrappedValue: router)
+//DispatchQueue.main.async {
+//print("SplashUIView: router=\(router)")
+//}
+//		Task {
+//			sleep(1)
+//			await router.parent?.store.dispatch(action: .signal("startChat"))
+//		}
 	}
 	
 //	func apiKeyErrorView() -> some View {

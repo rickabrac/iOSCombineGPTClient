@@ -25,7 +25,7 @@ enum ChatAction {
 	case getAPIKey(RouterStoreType)
 	case setAPIKey(String)
 	case clearAPIKey
-	case setAPI(GPTChatAPI)
+	case setAPI(ChatGPTAPI)
 	case promptAPIKey
 	case checkAPIKey(String, ChatStoreType)
 	case setTestAPIKey(String)
@@ -42,7 +42,7 @@ struct ChatState: State {
 	var error: String = ""
 	var showingError = false
 	var apiKey: String? = nil
-	var api: GPTChatAPI? = nil
+	var api: ChatGPTAPI? = nil
 	var testAPIKey: String = ""
 }
 
@@ -171,7 +171,7 @@ class ChatStore {
 			await store.dispatch(action: .setTestAPIKey(maybeKey))
 			var stream: AsyncStream<String>?
 			do {
-				let api = GPTChatAPI(key: maybeKey)
+				let api = ChatGPTAPI(key: maybeKey)
 				stream = try await api.fetchResponseStream(prompt: "?", store: store)
 			} catch {
 				return action

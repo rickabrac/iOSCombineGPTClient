@@ -8,42 +8,44 @@
 import SwiftUI
 
 struct ChatUIView: View {
-	@StateObject var router: RouterStoreType
+	@StateObject var router: Router
 	@StateObject var store: ChatStoreType
 	@SwiftUI.State private var prompt = ""
 	@SwiftUI.State private var sharingResponse = false
 	@SwiftUI.State private var showingError = false
 	@FocusState private var isFocused: Bool
 	@Environment(\.colorScheme) var colorScheme: ColorScheme
-//	let api: ChatAPI = ChatAPI()
 	
-	init(router: RouterStoreType, store: ChatStoreType = ChatStore.store, prompt: String = "") {
+	init(router: Router, store: ChatStoreType = ChatStore.store, prompt: String = "") {
 		self._router = StateObject(wrappedValue: router)
+//DispatchQueue.main.async {
+//print("ChatUIView: router=\(router)")
+//}
 		self._store = StateObject(wrappedValue: store)
 		self._prompt = .init(initialValue: prompt)
 		Task {
-			await store.dispatch(action: .setRouter(router))
-			await store.dispatch(action: .getAPIKey(router))
+			await store.dispatch(action: .setRouter(router.store))
+			await store.dispatch(action: .getAPIKey(router.store))
 		}
 	}
 	
 	private func progressView() -> some View {
-		if let signal = router.state.signal, let message = router.state.message {
+		if let signal = router.store.state.signal, let message = router.store.state.message {
 			if signal == "getAPIKey", message.starts(with: "apiKey:") {
 				if let apiKey = message.components(separatedBy: ":").last {
 					Task {
 						await store.dispatch(action: .setAPIKey(apiKey))
-						await router.dispatch(action: .clearSignal)
+						await router.store.dispatch(action: .clearSignal)
 					}
 				}
 			} else {
 				fatalError("ChatUIView.progressView: unknown router message (\(message))")
 			}
 		}
-		guard let apiKey = store.state.apiKey else { // }, router.state.event == nil else {
-			guard let _ = router.state.signal else {
+		guard let apiKey = store.state.apiKey else {
+			guard let _ = router.store.state.signal else {
 				Task {
-					await store.dispatch(action: .getAPIKey(router))
+					await store.dispatch(action: .getAPIKey(router.store))
 				}
 				return AnyView(EmptyView())
 			}
@@ -51,7 +53,7 @@ struct ChatUIView: View {
 		}
 		guard let api = store.state.api else {
 			Task {
-				await store.dispatch(action: .setAPI(GPTChatAPI(key: apiKey)))
+				await store.dispatch(action: .setAPI(ChatGPTAPI(key: apiKey)))
 			}
 			return AnyView(EmptyView())
 		}
