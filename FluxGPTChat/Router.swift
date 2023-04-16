@@ -46,10 +46,6 @@ class Router: ObservableObject {
 		await store.dispatch(action: .setMessage(message))	// forward downstream
 	}
 	
-//	func getMySignalsArray() -> [String] {
-//		fatalError("Router.getSignals: unimplemented by subclass")
-//	}
-	
 	func route() {
 		Task {
 			// handle new route

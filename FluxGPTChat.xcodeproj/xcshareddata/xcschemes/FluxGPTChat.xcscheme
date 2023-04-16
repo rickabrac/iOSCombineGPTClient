@@ -60,13 +60,6 @@
             ReferencedContainer = "container:FluxGPTChat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "GPT3_API_KEY"
-            value = "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"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

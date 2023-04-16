@@ -33,7 +33,7 @@ class MainRouter: Router {
 			self.window.rootViewController = self.splashUIViewController
 			self.window.makeKeyAndVisible()
 			self.splashUIViewController?.dismiss(animated: true)
-			DispatchQueue.global(qos: .userInitiated).async { // [weak self] in
+			DispatchQueue.global(qos: .userInitiated).async {
 				sleep(3)
 				Task {
 					await self.store.dispatch(action: .setNext("/chat"))
