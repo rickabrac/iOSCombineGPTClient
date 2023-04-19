@@ -1,4 +1,4 @@
-# iPhone GPT client using a pure state-driven, unidirectional dataflow architecture.
+## iPhone GPT chat client using a state-driven, unidirectional dataflow architecture.
   If you hire me as your iOS (Re)Architecture lead, I will extend this framework.
 
 ## Description
