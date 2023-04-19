@@ -2,15 +2,16 @@
 
 This app uses unidirectional data flow to manage state and is implemented with Combine.
 
-• State machine (Store.swift) adapted from https://obscuredpixels.com/managing-view-state-with-combineo
+• State machine (Store.swift) adapted from https://obscuredpixels.com/managing-view-state-with-combine
 
 ## FluxGPTChat/ Files
 
-App:
-
 APIKeyUIView.swift          SwiftUI View that prompts for an API Key if needed
+
 ChatAPI.swift               GPT3 API Service
+
 ChatRouter.swift            subclass of Router that coordinates ChatTabView
+
 ChatStore.swift             single source of truth for a chat interface
 ChatTabUIView.swift         SwiftUI tab view that allows user to switch interfaces
 ChatUIView.swift            SwiftUI version of the chat interface
