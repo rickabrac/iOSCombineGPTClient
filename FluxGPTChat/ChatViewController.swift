@@ -1,8 +1,7 @@
 //
 //  ChatViewController.swift
 //  FluxGPTChat
-//  Created by Rick Tyler
-//
+//  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
 import UIKit
@@ -13,7 +12,8 @@ class ChatViewController: UIViewController {
 	typealias StoreState = ChatState
 	typealias StoreAction = ChatAction
 	
-	private var chat: ChatStore?
+	private var router: ChatRouter?
+	private var chat: ChatStore? = nil
 	private var store: ChatStoreType? = nil
 	private let myTitle = UILabel()
 	private let prompt = MyTextField()
@@ -22,8 +22,18 @@ class ChatViewController: UIViewController {
 	private let spinner = UIActivityIndicatorView(style: .medium)
 	private let shareButton = UIButton(type: .system)
 	
+	init(router: ChatRouter) {
+		self.router = router
+		super.init(nibName: nil, bundle: nil)
+	}
+
 	func setChatStore(_ chat: ChatStore) {
 		self.chat = chat
+	}
+	
+	public required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		self.router = nil
 	}
 	
 	func overrideUserInterfaceStyle(_ style: UIUserInterfaceStyle) {
@@ -61,7 +71,7 @@ class ChatViewController: UIViewController {
 		}
 		
 		Task {
-			await store.bindStateObserver(refreshView, cancellables: &ChatViewController.cancellables)
+			await store.bindStateObserver(refreshView, &ChatViewController.pool)
 		}
 		
 		view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
@@ -234,7 +244,7 @@ class ChatViewController: UIViewController {
 			await store.dispatch(action: .streamResponse(stream, store.state.response))
 		}
 		if store.state.error.count > 0,
-		   store.state.showingError == false {
+		   store.state.isShowingError == false {
 			Task {
 				await store.dispatch(action: .presentError)
 			}
@@ -284,10 +294,15 @@ extension ChatViewController: UITextFieldDelegate {
 		spinner.isHidden = false
 		response.text = ""
 		Task {
-			guard let apiKey = ProcessInfo.processInfo.environment["GPT3_API_KEY"] else {
-				fatalError("You must assign a valid GPT3 API key to GPT3_API_KEY in your Xcode environment (under Product > Scheme > Edit Scheme...)")
+			if chat.store.state.api == nil {
+				guard let key = UserDefaults.standard.object(forKey: ChatAPI.apiKeyDefaultsName) as? String else {
+					fatalError("ChatViewController.textFieldShouldReturn: failed to unwrap api key")
+				}
+				await chat.store.dispatch(action: .setAPI(ChatAPI(key: key)))
 			}
-			let api = ChatGPTAPI(key: apiKey)
+			guard let api = chat.store.state.api else {
+				fatalError("ChatViewController.textFieldShouldReturn: failed to unwrap api")
+			}
 			let stream = try! await api.fetchResponseStream(prompt: prompt, store: chat.store)
 			await chat.store.dispatch(action: .setPrompt(prompt))
 			await chat.store.dispatch(action: .setStream(stream))
@@ -304,9 +319,12 @@ extension ChatViewController: UITextFieldDelegate {
 
 //  MARK: UIViewControllerRepresentable wrapper
 
-struct ChatViewControllerUIView: UIViewControllerRepresentable {
-	func makeUIViewController(context: Context) -> ChatViewController {
-		return ChatViewController()
+struct ChatViewControllerUIView : UIViewControllerRepresentable {
+	typealias UIViewControllerType = ChatViewController
+	var router: ChatRouter
+	var chat: ChatStoreType
+	public func makeUIViewController(context: UIViewControllerRepresentableContext<ChatViewControllerUIView>) -> ChatViewController {
+		return ChatViewController(router: router)
 	}
-	func updateUIViewController(_ uiViewController: ChatViewController, context: Context) { }
+	func updateUIViewController(_ uiViewController: ChatViewController, context: UIViewControllerRepresentableContext<ChatViewControllerUIView>) { }
 }

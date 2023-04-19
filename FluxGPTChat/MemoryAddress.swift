@@ -1,4 +1,5 @@
 // https://stackoverflow.com/a/45777692/5536516
+
 import Foundation
 
 struct MemoryAddress<T>: CustomStringConvertible {
@@ -17,7 +18,6 @@ struct MemoryAddress<T>: CustomStringConvertible {
 }
 
 extension MemoryAddress where T: AnyObject {
-
 	// for classes
 	init(of classInstance: T) {
 		intValue = unsafeBitCast(classInstance, to: Int.self)

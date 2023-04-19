@@ -1,8 +1,7 @@
 //
-//  MainUIView.swift
+//  ChatTabUIView.swift
 //  FluxGPTChat
-//  Created by Rick Tyler
-//
+//  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
 import SwiftUI
@@ -13,9 +12,6 @@ struct ChatTabUIView: View {
 
 	init(router: Router) {
 		self._router = StateObject(wrappedValue: router)
-//DispatchQueue.main.async {
-//print("ChatTabUIView: router=\(router)")
-//}
 		let tabBarAppearance = UITabBar.appearance()
 		tabBarAppearance.unselectedItemTintColor = .gray
 	}
@@ -31,7 +27,7 @@ struct ChatTabUIView: View {
 				}
 				.tag("SwiftUI")
 
-			ChatViewControllerUIView()
+			ChatViewControllerUIView(router: router as! ChatRouter, chat: ChatStore.store)
 				.onTapGesture {
 					selectedTab = "UIKit"
 				}

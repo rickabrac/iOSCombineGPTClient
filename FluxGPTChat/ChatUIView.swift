@@ -1,8 +1,7 @@
 //
 //  ChatUIView.swift
 //  FluxGPTChat
-//  Created by Rick Tyler
-//
+//  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
 import SwiftUI
@@ -18,9 +17,6 @@ struct ChatUIView: View {
 	
 	init(router: Router, store: ChatStoreType = ChatStore.store, prompt: String = "") {
 		self._router = StateObject(wrappedValue: router)
-//DispatchQueue.main.async {
-//print("ChatUIView: router=\(router)")
-//}
 		self._store = StateObject(wrappedValue: store)
 		self._prompt = .init(initialValue: prompt)
 		Task {
@@ -30,7 +26,7 @@ struct ChatUIView: View {
 	}
 	
 	private func progressView() -> some View {
-		if let signal = router.store.state.signal, let message = router.store.state.message {
+		if let signal = router.store.state.signal, let message = router.store.state.response {
 			if signal == "getAPIKey", message.starts(with: "apiKey:") {
 				if let apiKey = message.components(separatedBy: ":").last {
 					Task {
@@ -53,7 +49,7 @@ struct ChatUIView: View {
 		}
 		guard let api = store.state.api else {
 			Task {
-				await store.dispatch(action: .setAPI(ChatGPTAPI(key: apiKey)))
+				await store.dispatch(action: .setAPI(ChatAPI(key: apiKey)))
 			}
 			return AnyView(EmptyView())
 		}
@@ -70,7 +66,7 @@ struct ChatUIView: View {
 					}
 				}
 			)
-		} else if store.state.sharing {
+		} else if store.state.isSharingResponse {
 			return AnyView(
 				ProgressView()
 				.scaleEffect(1.0, anchor: .center)
@@ -89,7 +85,6 @@ struct ChatUIView: View {
 				guard let stream = store.state.stream else {
 					return
 				}
-//				await store.dispatch(action: .streamResponse(store.state.stream!, store.state.response))
 				await store.dispatch(action: .streamResponse(stream, store.state.response))
 			}
 		}
@@ -98,7 +93,7 @@ struct ChatUIView: View {
 	
 	private func alertView() -> some View {
 		if store.state.error.count > 0,
-		   store.state.showingError == false,
+		   store.state.isShowingError == false,
 		   showingError == false {
 			Task {
 				await store.dispatch(action: .presentError)
@@ -148,7 +143,7 @@ struct ChatUIView: View {
 						.onSubmit {
 							Task {
 								if store.state.stream != nil { return }
-								await store.dispatch(action: .setPrompt(prompt))
+									await store.dispatch(action: .setPrompt(prompt))
 							}
 						}
 						.autocapitalization(.none)
@@ -284,8 +279,6 @@ struct ChatUIView: View {
 			return controller
 		}
 
-		func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
-			// nothing to do here
-		}
+		func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) { }
 	}
 }

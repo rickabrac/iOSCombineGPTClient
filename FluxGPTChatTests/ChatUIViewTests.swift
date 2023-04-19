@@ -1,8 +1,7 @@
 //
 //  ChatUIViewTests.swift
 //  FluxGPTChatTests
-//  Created by Rick Tyler
-//
+//  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
 import XCTest
@@ -36,7 +35,10 @@ class ChatUIViewTests: XCTestCase {
 		while await store.state.stream != nil {
 			await  store.dispatch(action: .streamResponse(stream, store.state.response))
 		}
-		let chatView = await ChatUIView(router: newRouterStore(), store: store, prompt: input)
+		let mainRouter = MainRouter(UIWindow(), path: "/")
+		let chatRouter = ChatRouter(UIWindow(), path: "/chat", parent: mainRouter)
+		let chatView = await ChatUIView(router: chatRouter, store: store, prompt: input)
+		await chatView.store.dispatch(action: .setAPI(api))
 		vc = await UIHostingController(rootView: chatView)
 		await vc.loadView()
 	}
@@ -63,24 +65,3 @@ class ChatUIViewTests: XCTestCase {
 		wait(for: [snapshotTaken], timeout: 10)
 	}
 }
-
-//class MockRouter: Router {
-//	var window: UIWindow
-//	var parent: Router?
-//	var store: RouterStoreType
-//	var child: [String : Router]
-//	var view: [String : UIViewController]
-//	var cancellables: Set<AnyCancellable>
-//
-//	required init(_ window: UIWindow, path: String, parent: Router?, store: RouterStoreType) {
-//		self.parent = nil
-//		self.store = newRouterStore()
-//		self.child = [:]
-//	}
-//
-//	func start() {
-//	}
-//
-//	func route() {
-//	}
-//}

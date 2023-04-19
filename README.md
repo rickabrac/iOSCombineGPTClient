@@ -1,4 +1,4 @@
-# iOS GPT Chat client using the Flux Architecture
+# iOS/Swift/Combine app utilizing a 100% FRP/state-driven, unidirectional dataflow architecture. If you hire me as your iOS (Re)Architecture lead, I would extend this framework.
 
 ## Description
 
@@ -8,7 +8,6 @@ This app uses unidirectional data flow to manage state and is implemented with C
 
 ## To-Do
 
-• SwiftUI autoscrolling (not working in Xcode 13.2.1)
+• SwiftUI autoscrolling not working (at least in Xcode 13.2.1 / iOS 15.2)
 
-• Add prompt for GPT3 API key 
 

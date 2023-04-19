@@ -1,8 +1,7 @@
 //
 //  ChatRouter.swift
 //  FluxGPTChat
-//  Created by Rick Tyler
-//
+//  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
 import SwiftUI
@@ -10,7 +9,8 @@ import Combine
 
 class ChatRouter: Router {
 	private var chatTabUIViewController = UIViewController()
-	
+	private var pool = Set<AnyCancellable>()
+
 	required init(_ window: UIWindow, path: String, parent: Router?, store: RouterStoreType = newRouterStore()) {
 		super.init(window, path: path, parent: parent, store: store)
 		guard let _ = parent else {
@@ -19,6 +19,16 @@ class ChatRouter: Router {
 		if let module = path.components(separatedBy: "/").last, module != "chat" {
 			fatalError("ChatRouter.init: wrong module (\(module)")
 		}
+		
+		addSignalHandler("getAPIKey", upstream: nil,
+			downstream: { (signal, response) in
+				guard let apiKey = response.components(separatedBy: ":").last else {
+					fatalError("ChatRouter.upstream: failed to unwrap apiKey response")
+				}
+				UserDefaults.standard.set(apiKey, forKey: ChatAPI.apiKeyDefaultsName)
+				self.start()
+			}
+		)
 	}
 	
 	override func start() {

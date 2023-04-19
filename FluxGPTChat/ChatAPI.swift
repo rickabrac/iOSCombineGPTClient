@@ -1,8 +1,7 @@
 //
 //  GPTChatAPI.swift
 //  FluxGPTChat
-//  Created by Rick Tyler
-//
+//  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
 import Foundation
@@ -12,18 +11,22 @@ protocol ChatAPIProtocol {
 	func fetchResponseStream(prompt: String, store: ChatStoreType) async throws -> AsyncStream<String>
 }
 
-class ChatGPTAPI: ChatAPIProtocol {
-	
+class ChatAPI: ChatAPIProtocol, Equatable {
 	private let model = "gpt-3.5-turbo"
 	private let systemMessage = Message(role: "system", content: "You are my helpful AI assistant.")
 	private let temperature = 0.5
 	private var historyList = [Message]()
 	private let urlSession = URLSession.shared
 	private var cancellables = Set<AnyCancellable>()
+	static let apiKeyDefaultsName = "GPT3_API_KEY"
 	private var key = ""
 	
 	init(key: String) {
 		self.key = key
+	}
+	
+	static func == (lhs: ChatAPI, rhs: ChatAPI) -> Bool {
+		lhs.key == rhs.key
 	}
 	
 	private var urlRequest: URLRequest {

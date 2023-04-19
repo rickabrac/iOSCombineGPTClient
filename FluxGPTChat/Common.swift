@@ -1,8 +1,7 @@
 //
-//  Extensions.swift
+//  Common.swift
 //  FluxGPTChat
-//  Created by Rick Tyler
-//
+//  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
 import Foundation
@@ -12,25 +11,26 @@ import Combine
 //  MARK: Store extension
 
 extension Store {
-	func bindStateObserver(_ stateChangeHandler: @escaping () -> Void, cancellables: inout Set<AnyCancellable>) async {
+
+	func bindStateObserver(_ stateChangeHandler: @escaping () -> Void, _ pool: inout Set<AnyCancellable>) async {
 		self.objectWillChange.sink { _ in
 			stateChangeHandler()
 		}
-		.store(in: &cancellables)
+		.store(in: &pool)
 	}
 }
 
 //  MARK: UIViewController extension
 
 extension UIViewController {
-	private static var _cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
+	private static var _pool: Set<AnyCancellable> = Set<AnyCancellable>()
 	
-	static var cancellables: Set<AnyCancellable> {
+	static var pool: Set<AnyCancellable> {
 		get {
-			return _cancellables
+			return _pool
 		}
 		set {
-			_cancellables = newValue
+			_pool = newValue
 		}
 	}
 }
@@ -39,4 +39,10 @@ extension UIViewController {
 
 extension String: CustomNSError {
 	public var errorUserInfo: [String : Any] { [ NSLocalizedDescriptionKey: self ] }
+}
+
+extension NSObject {
+	var memaddr: String {
+		return "\(MemoryAddress(of: self).description)"
+	}
 }

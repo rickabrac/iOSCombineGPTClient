@@ -1,8 +1,7 @@
 //
 //  ChatViewControllerTests.swift
 //  FluxGPTChatTests
-//  Created by Rick Tyler
-//
+//  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
 import XCTest
@@ -12,7 +11,9 @@ import SnapshotTesting
 class ChatViewControllerTests: XCTestCase {
 	
 	var chat: ChatStore? = nil
-	let vc = ChatViewController()
+	let main = MainRouter(UIWindow(), path: "/")
+	var router: ChatRouter? = nil
+	var vc: ChatViewController? = nil
 	let input = "This is a test"
 	
 	let light = UITraitCollection(userInterfaceStyle: UIUserInterfaceStyle.light)
@@ -20,6 +21,8 @@ class ChatViewControllerTests: XCTestCase {
 	
 	override func setUpWithError() throws {
 //		isRecording = true
+		router = ChatRouter(UIWindow(), path: "/chat", parent: main)
+		vc = ChatViewController(router: router!)
 		if UIScreen.main.bounds != CGRect(x: 0.0, y: 0.0, width: 390.0, height: 844.0) {
 			fatalError("Please use the iPhone 13 simulator in portrait mode for snapshot tests")
 		}
@@ -29,6 +32,14 @@ class ChatViewControllerTests: XCTestCase {
 		chat = ChatStore()
 		let api = MockChatAPI(cannedResponseFileName)
 		guard let chat = chat else {
+			XCTFail()
+			return
+		}
+		guard let vc = vc else {
+			XCTFail()
+			return
+		}
+		guard let router = router else {
 			XCTFail()
 			return
 		}
@@ -44,10 +55,14 @@ class ChatViewControllerTests: XCTestCase {
 	
 	func test_ChatViewController_NormalResponse_Snapshot_Light() async throws {
 		try await asyncSetUpWithError("TestResponse.json")
-		let snapshotTaken = XCTestExpectation()
+		guard let vc = vc else {
+			XCTFail()
+			return
+		}
 		await vc.overrideUserInterfaceStyle(.light)
+		let snapshotTaken = XCTestExpectation()
 		DispatchQueue.main.async {
-			assertSnapshot(matching: self.vc, as: .image(on: .iPhoneX, traits: self.light))
+			assertSnapshot(matching: vc, as: .image(on: .iPhoneX, traits: self.light))
 			snapshotTaken.fulfill()
 		}
 		wait(for: [snapshotTaken], timeout: 10)
@@ -55,10 +70,14 @@ class ChatViewControllerTests: XCTestCase {
 
 	func test_ChatViewController_NormalResponse_Snapshot_Dark() async throws {
 		try await asyncSetUpWithError("TestResponse.json")
+		guard let vc = vc else {
+			XCTFail()
+			return
+		}
 		await vc.overrideUserInterfaceStyle(.dark)
 		let snapshotTaken = XCTestExpectation()
 		DispatchQueue.main.async {
-			assertSnapshot(matching: self.vc, as: .image(on: .iPhoneX, traits: self.dark))
+			assertSnapshot(matching: vc, as: .image(on: .iPhoneX, traits: self.dark))
 			snapshotTaken.fulfill()
 		}
 		wait(for: [snapshotTaken], timeout: 10)
