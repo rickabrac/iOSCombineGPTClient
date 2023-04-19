@@ -3,6 +3,8 @@
 //  FluxGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
+//
+//  Subclass of Router coordinates Chat-related views and APIKeyUIView when needed.
 
 import SwiftUI
 import Combine

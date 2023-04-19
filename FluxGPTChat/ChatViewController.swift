@@ -3,6 +3,8 @@
 //  FluxGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
+//
+//  Declarative UIKit version of the chat interface
 
 import UIKit
 import Combine

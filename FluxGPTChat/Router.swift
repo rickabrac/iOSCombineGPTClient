@@ -3,6 +3,8 @@
 //  FluxGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
+//
+//  State-driven app routing base class.
 
 import UIKit
 import Combine
@@ -65,10 +67,6 @@ class Router: ObservableObject {
 		window.rootViewController = vc
 	}
 	
-//	private var memaddr: String {
-//		return "\(MemoryAddress(of: self).description)"
-//	}
-//	
 	func route() {
 		Task {
 			// route request?

@@ -3,6 +3,8 @@
 //  FluxGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
+//
+//  Single source of truth/state for the app
 
 import Foundation
 import SwiftUI

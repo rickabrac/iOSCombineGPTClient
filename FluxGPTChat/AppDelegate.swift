@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		let router = MainRouter(window, path: "/")
-//UserDefaults.standard.removeObject(forKey: ChatAPI.apiKeyDefaultsName)
 		router.start()
 		Task {
 			await router.store.dispatch(action: .setName("main"))

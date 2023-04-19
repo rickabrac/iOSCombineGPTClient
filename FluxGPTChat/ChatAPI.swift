@@ -3,6 +3,8 @@
 //  FluxGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
+//
+//  GPT-3 API that returns results using ChatStore and AsyncStream
 
 import Foundation
 import Combine
@@ -11,7 +13,7 @@ protocol ChatAPIProtocol {
 	func fetchResponseStream(prompt: String, store: ChatStoreType) async throws -> AsyncStream<String>
 }
 
-class ChatAPI: ChatAPIProtocol, Equatable {
+class ChatAPI: ChatAPIProtocol {
 	private let model = "gpt-3.5-turbo"
 	private let systemMessage = Message(role: "system", content: "You are my helpful AI assistant.")
 	private let temperature = 0.5
@@ -23,10 +25,6 @@ class ChatAPI: ChatAPIProtocol, Equatable {
 	
 	init(key: String) {
 		self.key = key
-	}
-	
-	static func == (lhs: ChatAPI, rhs: ChatAPI) -> Bool {
-		lhs.key == rhs.key
 	}
 	
 	private var urlRequest: URLRequest {
@@ -116,6 +114,14 @@ class ChatAPI: ChatAPIProtocol, Equatable {
 				}
 			}
 		}
+	}
+}
+
+// MARK: ChatAPI Equatable conformance
+
+extension ChatAPI: Equatable {
+	static func == (lhs: ChatAPI, rhs: ChatAPI) -> Bool {
+		lhs.key == rhs.key
 	}
 }
 

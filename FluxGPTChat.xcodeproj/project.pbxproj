@@ -10,7 +10,6 @@
 		1D73105F29EA19A600884CAD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105C29EA19A600884CAD /* Store.swift */; };
 		1D73106029EA19A600884CAD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105D29EA19A600884CAD /* Router.swift */; };
 		1D73106129EA19A600884CAD /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105E29EA19A600884CAD /* Common.swift */; };
-		1D9397A329E893FA00E496B8 /* MemoryAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9397A229E893FA00E496B8 /* MemoryAddress.swift */; };
 		1DB40A2D29EDCDDC0065D919 /* APIKeyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A2C29EDCDDC0065D919 /* APIKeyUIView.swift */; };
 		1DB9919929E36746005E5C75 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918A29E36746005E5C75 /* ChatAPI.swift */; };
 		1DB9919A29E36746005E5C75 /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918B29E36746005E5C75 /* ChatStore.swift */; };
@@ -46,7 +45,6 @@
 		1D73105C29EA19A600884CAD /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1D73105D29EA19A600884CAD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1D73105E29EA19A600884CAD /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		1D9397A229E893FA00E496B8 /* MemoryAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryAddress.swift; sourceTree = "<group>"; };
 		1DB40A2C29EDCDDC0065D919 /* APIKeyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyUIView.swift; sourceTree = "<group>"; };
 		1DB9915529E36672005E5C75 /* FluxGPTChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluxGPTChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB9916629E36675005E5C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				1DB9918D29E36746005E5C75 /* ChatUIView.swift */,
 				1DB9919429E36746005E5C75 /* ChatViewController.swift */,
 				1DB9920029E4B797005E5C75 /* TestResponse.json */,
-				1D9397A229E893FA00E496B8 /* MemoryAddress.swift */,
 				1DB991A629E3692D005E5C75 /* AppDelegate.swift */,
 				1D73105C29EA19A600884CAD /* Store.swift */,
 				1DB991ED29E4B5DC005E5C75 /* LaunchScreen.storyboard */,
@@ -265,7 +262,6 @@
 				1DB991A529E36746005E5C75 /* ChatTabUIView.swift in Sources */,
 				1D73105F29EA19A600884CAD /* Store.swift in Sources */,
 				1D73106129EA19A600884CAD /* Common.swift in Sources */,
-				1D9397A329E893FA00E496B8 /* MemoryAddress.swift in Sources */,
 				1DB9921029E78D7A005E5C75 /* ChatRouter.swift in Sources */,
 				1DB991A329E36746005E5C75 /* ChatViewController.swift in Sources */,
 				1DB40A2D29EDCDDC0065D919 /* APIKeyUIView.swift in Sources */,

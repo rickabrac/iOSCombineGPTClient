@@ -3,6 +3,10 @@
 //  FluxGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
+//
+//  Router subclass that acts as the app entry point. MainRouter coordinates
+//  SplashUIView, ChatRouter and APIKeyUIView. It responds to ChatStore.GetAPIKeyAction
+//  by presenting the APIKeyUIView and propogating the validated key to ChatRouter.
 
 import SwiftUI
 import Combine

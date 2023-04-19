@@ -40,9 +40,3 @@ extension UIViewController {
 extension String: CustomNSError {
 	public var errorUserInfo: [String : Any] { [ NSLocalizedDescriptionKey: self ] }
 }
-
-extension NSObject {
-	var memaddr: String {
-		return "\(MemoryAddress(of: self).description)"
-	}
-}

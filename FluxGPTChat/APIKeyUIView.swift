@@ -3,6 +3,9 @@
 //  FluxGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
+//
+//  SwiftUI View prompts for a GPT-3 API Key, validates the key,
+//  and passes it back to MainRouter.
 
 import SwiftUI
 
@@ -13,11 +16,6 @@ struct APIKeyUIView: View {
 	@SwiftUI.State private var tryKey = ""
 	@SwiftUI.State private var error = ""
 	@Environment(\.dismiss) var dismiss
-//	@SwiftUI.State private var promptingForAPIKey = true
-//	@SwiftUI.State private var showingAPIKeyError = false
-//	@SwiftUI.State private var apiKeyDefined = false
-//	@SwiftUI.State private var okDisabled = false
-//	@SwiftUI.State private var isPresenting = true
 	
 	init(router: Router, store: ChatStoreType) {
 		self._router = StateObject(wrappedValue: router)
