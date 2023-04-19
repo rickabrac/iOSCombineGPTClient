@@ -12,6 +12,7 @@ import Combine
 
 class ChatUIViewTests: XCTestCase {
 	
+	let window = UIWindow()
 	var vc: UIViewController!
 	var chat: ChatStore? = nil
 	let input = "This is a test"
@@ -33,12 +34,12 @@ class ChatUIViewTests: XCTestCase {
 		await  store.dispatch(action: .setPrompt(input))
 		await  store.dispatch(action: .setStream(stream))
 		while await store.state.stream != nil {
-			await  store.dispatch(action: .streamResponse(stream, store.state.response))
+			await store.dispatch(action: .streamResponse(stream, store.state.response))
 		}
-		let mainRouter = MainRouter(UIWindow(), path: "/")
-		let chatRouter = ChatRouter(UIWindow(), path: "/chat", parent: mainRouter)
+		let mainRouter = MainRouter(window, path: "/")
+		let chatRouter = ChatRouter(window, path: "/chat", parent: mainRouter)
 		let chatView = await ChatUIView(router: chatRouter, store: store, prompt: input)
-		await chatView.store.dispatch(action: .setAPI(api))
+		await store.dispatch(action: .setAPI(api))
 		vc = await UIHostingController(rootView: chatView)
 		await vc.loadView()
 	}

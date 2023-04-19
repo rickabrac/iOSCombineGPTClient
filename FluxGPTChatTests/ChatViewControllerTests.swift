@@ -39,10 +39,6 @@ class ChatViewControllerTests: XCTestCase {
 			XCTFail()
 			return
 		}
-		guard let router = router else {
-			XCTFail()
-			return
-		}
 		await vc.setChatStore(chat)
 		await vc.loadView()
 		await vc.configure()
