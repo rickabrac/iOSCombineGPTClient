@@ -1,4 +1,5 @@
-# iOS/Swift/Combine app utilizing 100% FRP/state-driven, unidirectional dataflow. If you hire me as your iOS (Re)Architecture lead, I would extend this framework.
+# iPhone GPT client using a pure state-driven, unidirectional dataflow architecture.
+  If you hire me as your iOS (Re)Architecture lead, I will extend this framework.
 
 ## Description
 
