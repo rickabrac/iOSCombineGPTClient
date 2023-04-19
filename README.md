@@ -8,12 +8,12 @@ This app uses unidirectional data flow to manage state and is implemented with C
 
 FluxGPTChat/
 
-  • APIKeyUIView.swift          SwiftUI View that prompts for an API Key if needed
-  • ChatAPI.swift               GPT3 API Service
-  • ChatRouter.swift            subclass of Router that coordinates ChatTabView
-  ChatStore.swift             single source of truth for a chat interface
-  ChatTabUIView.swift         SwiftUI tab view that allows user to switch interfaces
-  ChatUIView.swift            SwiftUI version of the chat interface
+   APIKeyUIView.swift          SwiftUI View that prompts for an API Key if needed
+ChatAPI.swift               GPT3 API Service
+ChatRouter.swift            subclass of Router that coordinates ChatTabView
+ChatStore.swift             single source of truth for a chat interface
+ChatTabUIView.swift         SwiftUI tab view that allows user to switch interfaces
+ChatUIView.swift            SwiftUI version of the chat interface
   ChatViewController.swift    declarative UIKit version of chat intervace
   Common.swift                shared Protocols, Extensions, etc.
   MainRouter.swift            subclass of Router that acts as the app entry point
