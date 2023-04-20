@@ -46,7 +46,8 @@ class MainRouter: Router {
 			self.window.makeKeyAndVisible()
 			
 			DispatchQueue.global(qos: .userInitiated).async {
-				sleep(2) // after a delay, route to chat interface
+				sleep(3)
+				// reroute to the chat interface after a few seconds
 				DispatchQueue.main.async {
 					self.splashUIViewController?.dismiss(animated: true)
 				}
