@@ -6,7 +6,7 @@
 
 import XCTest
 import Combine
-@testable import FluxGPTChat
+@testable import CombineGPTChat
 
 class ChatStoreTests: XCTestCase {
 	
@@ -16,7 +16,7 @@ class ChatStoreTests: XCTestCase {
 	let input = "test"
 	let output = "There once was a man from Peru\nWho dreamed of eating a big kangaroo\nHe hopped and he skipped\nBut the kangaroo flipped\nAnd said, \"I\'m not your average stew!\""
 	
-	func testChatStoreSetPrompt() async throws {
+	func test_ChatAction_setPrompt() async throws {
 		await chat.store.dispatch(action: .setPrompt(input))
 		await chat.store.dispatch(action: .updateResponse(input))
 		await chat.store.dispatch(action: .setPrompt(input))
@@ -26,7 +26,7 @@ class ChatStoreTests: XCTestCase {
 		XCTAssertEqual(response, "")
 	}
 
-	func testChatStoreSetStream() async throws {
+	func test_ChatAction_setStream() async throws {
 		let inputStream = try await api.fetchResponseStream(prompt: "", store: chat.store)
 		await chat.store.dispatch(action: .setPrompt(input))
 		await chat.store.dispatch(action: .throwError(input))
@@ -47,7 +47,7 @@ class ChatStoreTests: XCTestCase {
 		}
 	}
 
-	func testChatStoreStreamResponse() async throws {
+	func test_ChatAction_streamResponse() async throws {
 		var cancellables = Set<AnyCancellable>()
 		chat.store.objectWillChange.sink { [weak self] in
 			guard let self = self else {
@@ -66,13 +66,13 @@ class ChatStoreTests: XCTestCase {
 		wait(for: [responseStreamed], timeout: 5)
 	}
 	
-	func testChatStoreUpdateResponse() async throws {
+	func test_ChatAction_updateResponse() async throws {
 		await chat.store.dispatch(action: .updateResponse(input))
 		let response = await chat.store.state.response
 		XCTAssertEqual(response, input)
 	}
 	
-	func testChatStoreEndResponse() async throws {
+	func test_ChatAction_endResponse() async throws {
 		await chat.store.dispatch(action: .setPrompt(input))
 		await chat.store.dispatch(action: .updateResponse(output))
 		await chat.store.dispatch(action: .endResponse)
@@ -84,7 +84,7 @@ class ChatStoreTests: XCTestCase {
 		if stream != nil { XCTFail() }
 	}
 	
-	func testChatStoreSetSharing() async throws {
+	func test_ChatAction_setSharing() async throws {
 		await chat.store.dispatch(action: .setSharing(true))
 		let sharingTrue = await chat.store.state.isSharingResponse
 		XCTAssertEqual(sharingTrue, true)
@@ -93,19 +93,19 @@ class ChatStoreTests: XCTestCase {
 		XCTAssertEqual(sharingFalse, false)
 	}
 	
-	func testChatStoreThrowError() async throws {
+	func test_ChatAction_throwError() async throws {
 		await chat.store.dispatch(action: .throwError(input))
 		let error = await chat.store.state.error
 		XCTAssertEqual(error, input)
 	}
 	
-	func testChatStorePresentError() async throws {
+	func test_ChatAction_presentError() async throws {
 		await chat.store.dispatch(action: .presentError)
 		let showingError = await chat.store.state.isShowingError
 		XCTAssertEqual(showingError, true)
 	}
 	
-	func testChatStoreClearError() async throws {
+	func test_ChatAction_clearError() async throws {
 		await chat.store.dispatch(action: .presentError)
 		let threwShowingError = await chat.store.state.isShowingError
 		XCTAssertEqual(threwShowingError, true)
@@ -114,7 +114,7 @@ class ChatStoreTests: XCTestCase {
 		XCTAssertEqual(clearedShowingError, false)
 	}
 	
-	func testChatStoreGetAPIKey() async throws {
+	func test_ChatAction_getAPIKey() async throws {
 		guard let chatRouterStore = ChatRouter.instance?.store else {
 			XCTFail()
 			return
@@ -139,14 +139,14 @@ class ChatStoreTests: XCTestCase {
 		XCTAssertEqual(input, testAPIKey)
 	}
 	
-	func testChatStoreTryTestAPIKey() async throws {
+	func test_ChatAction_tryTestAPIKey() async throws {
 		let stream = try await api.fetchResponseStream(prompt: "?", store: chat.store)
 		await chat.store.dispatch(action: .tryTestAPIKey(stream, input))
 		let apiKey = await chat.store.state.apiKey
 		XCTAssertEqual(apiKey, input)
 	}
 
-	func testChatSetAPIKey() async throws {
+	func test_ChatAction_setAPIKey() async throws {
 		await chat.store.dispatch(action: .setAPIKey(input))
 		guard let output = await chat.store.state.apiKey else {
 			XCTFail()
@@ -155,7 +155,7 @@ class ChatStoreTests: XCTestCase {
 		XCTAssertEqual(input, output)
 	}
 	
-	func testChatStoreSetAPI() async throws {
+	func test_ChatAction_setAPI() async throws {
 		let apiInput = ChatGPTAPI(key: "?")
 		await chat.store.dispatch(action: .setAPI(apiInput))
 		guard let apiOutput = await chat.store.state.api as? ChatGPTAPI else {

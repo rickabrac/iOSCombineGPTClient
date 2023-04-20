@@ -5,7 +5,7 @@
 //  SPDX-License-Identifier: MIT
 
 import Foundation
-@testable import FluxGPTChat
+@testable import CombineGPTChat
 
 class MockChatAPI: ChatAPIProtocol {
 	private let cannedResponseFileName: String

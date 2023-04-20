@@ -5,19 +5,19 @@
 //  SPDX-License-Identifier: MIT
 
 import XCTest
-@testable import FluxGPTChat
+@testable import CombineGPTChat
 
 class RouterStoreTests: XCTestCase {
 	let input = "test"
 	
-	func testChatStoreSetName() async throws {
+	func test_RouterAction_setName() async throws {
 		let store = newRouterStore()
 		await store.dispatch(action: .setName(input))
 		let name = await store.state.name
 		XCTAssertEqual(name, input)
 	}
 	
-	func testChatStoreSetPath() async throws {
+	func test_RouterAction_setPath() async throws {
 		let store = newRouterStore()
 		await store.dispatch(action: .setNext(input))
 		await store.dispatch(action: .signal(input))
@@ -30,7 +30,7 @@ class RouterStoreTests: XCTestCase {
 		XCTAssertEqual(signal, nil)
 	}
 	
-	func testChatStoreSetNext() async throws {
+	func test_RouterAction_setNext() async throws {
 		let store = newRouterStore()
 		await store.dispatch(action: .signal(input))
 		await store.dispatch(action: .setNext(input))
@@ -40,14 +40,14 @@ class RouterStoreTests: XCTestCase {
 		XCTAssertEqual(signal, nil)
 	}
 	
-	func testChatStoreSignal() async throws {
+	func test_RouterAction_signal() async throws {
 		let store = newRouterStore()
 		await store.dispatch(action: .signal(input))
 		let signal = await store.state.signal
 		XCTAssertEqual(signal, input)
 	}
 	
-	func testChatStoreClearSignal() async throws {
+	func test_RouterAction_clearSignal() async throws {
 		let store = newRouterStore()
 		await store.dispatch(action: .signal(input))
 		await store.dispatch(action: .respond(input))
@@ -58,7 +58,7 @@ class RouterStoreTests: XCTestCase {
 		XCTAssertEqual(response, nil)
 	}
 	
-	func testChatStoreRespond() async throws {
+	func test_RouterAction_respond() async throws {
 		let store = newRouterStore()
 		await store.dispatch(action: .respond(input))
 		let response = await store.state.response

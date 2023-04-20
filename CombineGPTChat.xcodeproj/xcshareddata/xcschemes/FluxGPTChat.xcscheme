@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1DB9915429E36672005E5C75"
-               BuildableName = "FluxGPTChat.app"
-               BlueprintName = "FluxGPTChat"
-               ReferencedContainer = "container:FluxGPTChat.xcodeproj">
+               BuildableName = "CombineGPTChat.app"
+               BlueprintName = "CombineGPTChat"
+               ReferencedContainer = "container:CombineGPTChat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1DB9916A29E36676005E5C75"
-               BuildableName = "FluxGPTChatTests.xctest"
-               BlueprintName = "FluxGPTChatTests"
-               ReferencedContainer = "container:FluxGPTChat.xcodeproj">
+               BuildableName = "CombineGPTChatTests.xctest"
+               BlueprintName = "CombineGPTChatTests"
+               ReferencedContainer = "container:CombineGPTChat.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1DB9915429E36672005E5C75"
-            BuildableName = "FluxGPTChat.app"
-            BlueprintName = "FluxGPTChat"
-            ReferencedContainer = "container:FluxGPTChat.xcodeproj">
+            BuildableName = "CombineGPTChat.app"
+            BlueprintName = "CombineGPTChat"
+            ReferencedContainer = "container:CombineGPTChat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1DB9915429E36672005E5C75"
-            BuildableName = "FluxGPTChat.app"
-            BlueprintName = "FluxGPTChat"
-            ReferencedContainer = "container:FluxGPTChat.xcodeproj">
+            BuildableName = "CombineGPTChat.app"
+            BlueprintName = "CombineGPTChat"
+            ReferencedContainer = "container:CombineGPTChat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

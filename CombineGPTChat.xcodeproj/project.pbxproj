@@ -39,7 +39,7 @@
 			containerPortal = 1DB9914D29E36672005E5C75 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1DB9915429E36672005E5C75;
-			remoteInfo = FluxGPTChat;
+			remoteInfo = CombineGPTChat;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -50,9 +50,9 @@
 		1DB40A2C29EDCDDC0065D919 /* APIKeyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyUIView.swift; sourceTree = "<group>"; };
 		1DB40A2E29F1BE370065D919 /* RouterStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStoreTests.swift; sourceTree = "<group>"; };
 		1DB40A3029F1C43E0065D919 /* RouterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStore.swift; sourceTree = "<group>"; };
-		1DB9915529E36672005E5C75 /* FluxGPTChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FluxGPTChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DB9915529E36672005E5C75 /* CombineGPTChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineGPTChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB9916629E36675005E5C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1DB9916B29E36676005E5C75 /* FluxGPTChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FluxGPTChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DB9916B29E36676005E5C75 /* CombineGPTChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CombineGPTChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB9918A29E36746005E5C75 /* ChatGPTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatGPTAPI.swift; sourceTree = "<group>"; };
 		1DB9918B29E36746005E5C75 /* ChatStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
 		1DB9918D29E36746005E5C75 /* ChatUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUIView.swift; sourceTree = "<group>"; };
@@ -96,8 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				1DB991B029E4AEC8005E5C75 /* README.md */,
-				1DB9915729E36672005E5C75 /* FluxGPTChat */,
-				1DB9916E29E36676005E5C75 /* FluxGPTChatTests */,
+				1DB9915729E36672005E5C75 /* CombineGPTChat */,
+				1DB9916E29E36676005E5C75 /* CombineGPTChatTests */,
 				1DB9915629E36672005E5C75 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,13 +105,13 @@
 		1DB9915629E36672005E5C75 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1DB9915529E36672005E5C75 /* FluxGPTChat.app */,
-				1DB9916B29E36676005E5C75 /* FluxGPTChatTests.xctest */,
+				1DB9915529E36672005E5C75 /* CombineGPTChat.app */,
+				1DB9916B29E36676005E5C75 /* CombineGPTChatTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1DB9915729E36672005E5C75 /* FluxGPTChat */ = {
+		1DB9915729E36672005E5C75 /* CombineGPTChat */ = {
 			isa = PBXGroup;
 			children = (
 				1D73105E29EA19A600884CAD /* Common.swift */,
@@ -133,10 +133,10 @@
 				1DB9920429E4B865005E5C75 /* Assets.xcassets */,
 				1DB9920029E4B797005E5C75 /* TestResponse.json */,
 			);
-			path = FluxGPTChat;
+			path = CombineGPTChat;
 			sourceTree = "<group>";
 		};
-		1DB9916E29E36676005E5C75 /* FluxGPTChatTests */ = {
+		1DB9916E29E36676005E5C75 /* CombineGPTChatTests */ = {
 			isa = PBXGroup;
 			children = (
 				1DB40A2E29F1BE370065D919 /* RouterStoreTests.swift */,
@@ -146,15 +146,15 @@
 				1DB991F529E4B728005E5C75 /* MockChatAPI.swift */,
 				1DB991F629E4B728005E5C75 /* __Snapshots__ */,
 			);
-			path = FluxGPTChatTests;
+			path = CombineGPTChatTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1DB9915429E36672005E5C75 /* FluxGPTChat */ = {
+		1DB9915429E36672005E5C75 /* CombineGPTChat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DB9917F29E36676005E5C75 /* Build configuration list for PBXNativeTarget "FluxGPTChat" */;
+			buildConfigurationList = 1DB9917F29E36676005E5C75 /* Build configuration list for PBXNativeTarget "CombineGPTChat" */;
 			buildPhases = (
 				1DB9915129E36672005E5C75 /* Sources */,
 				1DB9915229E36672005E5C75 /* Frameworks */,
@@ -164,16 +164,16 @@
 			);
 			dependencies = (
 			);
-			name = FluxGPTChat;
+			name = CombineGPTChat;
 			packageProductDependencies = (
 			);
-			productName = FluxGPTChat;
-			productReference = 1DB9915529E36672005E5C75 /* FluxGPTChat.app */;
+			productName = CombineGPTChat;
+			productReference = 1DB9915529E36672005E5C75 /* CombineGPTChat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1DB9916A29E36676005E5C75 /* FluxGPTChatTests */ = {
+		1DB9916A29E36676005E5C75 /* CombineGPTChatTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DB9918229E36676005E5C75 /* Build configuration list for PBXNativeTarget "FluxGPTChatTests" */;
+			buildConfigurationList = 1DB9918229E36676005E5C75 /* Build configuration list for PBXNativeTarget "CombineGPTChatTests" */;
 			buildPhases = (
 				1DB9916729E36676005E5C75 /* Sources */,
 				1DB9916829E36676005E5C75 /* Frameworks */,
@@ -184,12 +184,12 @@
 			dependencies = (
 				1DB9916D29E36676005E5C75 /* PBXTargetDependency */,
 			);
-			name = FluxGPTChatTests;
+			name = CombineGPTChatTests;
 			packageProductDependencies = (
 				1DB9920729E4BC03005E5C75 /* SnapshotTesting */,
 			);
-			productName = FluxGPTChatTests;
-			productReference = 1DB9916B29E36676005E5C75 /* FluxGPTChatTests.xctest */;
+			productName = CombineGPTChatTests;
+			productReference = 1DB9916B29E36676005E5C75 /* CombineGPTChatTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -211,7 +211,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1DB9915029E36672005E5C75 /* Build configuration list for PBXProject "FluxGPTChat" */;
+			buildConfigurationList = 1DB9915029E36672005E5C75 /* Build configuration list for PBXProject "CombineGPTChat" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -227,8 +227,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1DB9915429E36672005E5C75 /* FluxGPTChat */,
-				1DB9916A29E36676005E5C75 /* FluxGPTChatTests */,
+				1DB9915429E36672005E5C75 /* CombineGPTChat */,
+				1DB9916A29E36676005E5C75 /* CombineGPTChatTests */,
 			);
 		};
 /* End PBXProject section */
@@ -293,7 +293,7 @@
 /* Begin PBXTargetDependency section */
 		1DB9916D29E36676005E5C75 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1DB9915429E36672005E5C75 /* FluxGPTChat */;
+			target = 1DB9915429E36672005E5C75 /* CombineGPTChat */;
 			targetProxy = 1DB9916C29E36676005E5C75 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -435,7 +435,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8YF8T56D68;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FluxGPTChat/Info.plist;
+				INFOPLIST_FILE = CombineGPTChat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -445,7 +445,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tyler.org.FluxGPTChat;
+				PRODUCT_BUNDLE_IDENTIFIER = tyler.org.CombineGPTChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -462,7 +462,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8YF8T56D68;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FluxGPTChat/Info.plist;
+				INFOPLIST_FILE = CombineGPTChat/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -472,7 +472,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tyler.org.FluxGPTChat;
+				PRODUCT_BUNDLE_IDENTIFIER = tyler.org.CombineGPTChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -491,12 +491,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tyler.org.FluxGPTChatTests;
+				PRODUCT_BUNDLE_IDENTIFIER = tyler.org.CombineGPTChatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FluxGPTChat.app/FluxGPTChat";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CombineGPTChat.app/CombineGPTChat";
 			};
 			name = Debug;
 		};
@@ -511,19 +511,19 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tyler.org.FluxGPTChatTests;
+				PRODUCT_BUNDLE_IDENTIFIER = tyler.org.CombineGPTChatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FluxGPTChat.app/FluxGPTChat";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CombineGPTChat.app/CombineGPTChat";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DB9915029E36672005E5C75 /* Build configuration list for PBXProject "FluxGPTChat" */ = {
+		1DB9915029E36672005E5C75 /* Build configuration list for PBXProject "CombineGPTChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DB9917D29E36676005E5C75 /* Debug */,
@@ -532,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DB9917F29E36676005E5C75 /* Build configuration list for PBXNativeTarget "FluxGPTChat" */ = {
+		1DB9917F29E36676005E5C75 /* Build configuration list for PBXNativeTarget "CombineGPTChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DB9918029E36676005E5C75 /* Debug */,
@@ -541,7 +541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DB9918229E36676005E5C75 /* Build configuration list for PBXNativeTarget "FluxGPTChatTests" */ = {
+		1DB9918229E36676005E5C75 /* Build configuration list for PBXNativeTarget "CombineGPTChatTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DB9918329E36676005E5C75 /* Debug */,

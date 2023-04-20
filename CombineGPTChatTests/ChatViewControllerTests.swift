@@ -6,7 +6,7 @@
 
 import XCTest
 import SnapshotTesting
-@testable import FluxGPTChat
+@testable import CombineGPTChat
 
 class ChatViewControllerTests: XCTestCase {
 	

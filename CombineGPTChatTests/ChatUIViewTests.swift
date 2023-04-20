@@ -8,7 +8,7 @@ import XCTest
 import SnapshotTesting
 import SwiftUI
 import Combine
-@testable import FluxGPTChat
+@testable import CombineGPTChat
 
 class ChatUIViewTests: XCTestCase {
 	
