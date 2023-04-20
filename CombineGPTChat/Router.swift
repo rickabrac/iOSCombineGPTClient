@@ -4,7 +4,7 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  State-driven app routing / coordination base class. MainRouter and ChatRouter are instances.
+//  State-driven app router/coordinator base class. MainRouter and ChatRouter are instances.
 
 import UIKit
 import Combine
@@ -66,7 +66,7 @@ class Router: ObservableObject {
 		handlers[signal] = RouterSignalHandlers(upstream: upstream, downstream: downstream)
 	}
 	
-	/// <#Start/restart a router#>
+	/// <#Start or restart the router#>
 	///
 	func start() {
 		fatalError("Router.start: unimplemented by subclass")
@@ -81,7 +81,7 @@ class Router: ObservableObject {
 		window.rootViewController = vc
 	}
 	
-	/// <#Respond to a new route request or RouterSignal#>
+	/// <#Respond to a new route or RouterSignal#>
 	///
 	/// - Parameters:
 	///     - vc: view controller to be assign to active
@@ -91,7 +91,7 @@ class Router: ObservableObject {
 			defer {
 				self.updated = NSDate().timeIntervalSince1970
 			}
-			// route request?
+			// new route?
 			if await store.state.next.count > 0 {
 				let next = await store.state.next
 				if next == path {
@@ -133,7 +133,7 @@ class Router: ObservableObject {
 				await parent?.store.dispatch(action: .signal(signal))
 				return
 			}
-			// downstream response?
+			// downstream signal?
 			if let signal = await store.state.signal,
 			   await store.state.response == nil,
 			   let parentSignal = await parent?.store.state.signal,

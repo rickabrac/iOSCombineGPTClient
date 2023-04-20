@@ -4,7 +4,7 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  Router/coordinator state-machine
+//  Router/coordinator store (state-machine)
 
 import Foundation
 

@@ -73,6 +73,7 @@ class ChatStore {
 			case .endResponse:
 				newState.prompt = ""
 				newState.stream = nil
+				print("\(newState.response)")
 			case .setSharing(let sharing):
 				newState.isSharingResponse = sharing
 			case .throwError(let error):
