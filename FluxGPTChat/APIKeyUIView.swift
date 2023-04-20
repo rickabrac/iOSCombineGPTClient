@@ -4,12 +4,12 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  SwiftUI View prompts for a GPT-3 API Key, validates the key,
-//  and passes it back to MainRouter.
+//  SwiftUI view prompts for and validates GPT-3 API Key, coordinated by the MainRouter.
 
 import SwiftUI
 
 struct APIKeyUIView: View {
+	
 	@StateObject var router: Router
 	@StateObject var store: ChatStoreType
 	@FocusState var isFocused: Bool
@@ -41,7 +41,7 @@ struct APIKeyUIView: View {
 					if let stream = store.state.stream {
 						await store.dispatch(action: .tryTestAPIKey(stream, testKey))
 					} else {
-						let api = ChatAPI(key: testKey)
+						let api = ChatGPTAPI(key: testKey)
 						let stream = try await api.fetchResponseStream(prompt: "", store: store)
 						await store.dispatch(action: .setStream(stream))
 					}

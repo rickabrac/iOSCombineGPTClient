@@ -4,7 +4,7 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  Declarative UIKit version of the chat interface
+//  Declarative UIKit implementation of the chat interface
 
 import UIKit
 import Combine
@@ -297,10 +297,10 @@ extension ChatViewController: UITextFieldDelegate {
 		response.text = ""
 		Task {
 			if chat.store.state.api == nil {
-				guard let key = UserDefaults.standard.object(forKey: ChatAPI.apiKeyDefaultsName) as? String else {
+				guard let key = ChatGPTAPI.apiKey else {
 					fatalError("ChatViewController.textFieldShouldReturn: failed to unwrap api key")
 				}
-				await chat.store.dispatch(action: .setAPI(ChatAPI(key: key)))
+				await chat.store.dispatch(action: .setAPI(ChatGPTAPI(key: key)))
 			}
 			guard let api = chat.store.state.api else {
 				fatalError("ChatViewController.textFieldShouldReturn: failed to unwrap api")

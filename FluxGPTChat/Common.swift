@@ -3,6 +3,8 @@
 //  FluxGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
+//
+//  Various shared extensions
 
 import Foundation
 import SwiftUI

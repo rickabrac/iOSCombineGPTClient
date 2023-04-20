@@ -4,8 +4,8 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  SwiftUI tab view allows the user to switch between the SwiftUI (ChatUIView)
-//  and declarative UIKit (ChatViewController) view implementations.
+//  SwiftUI tab view allows the user to switch between ChatUIView and ChatViewController,
+//  coodidnated by ChatRouter.
 
 import SwiftUI
 

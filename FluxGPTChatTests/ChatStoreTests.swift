@@ -114,12 +114,38 @@ class ChatStoreTests: XCTestCase {
 		XCTAssertEqual(clearedShowingError, false)
 	}
 	
+	func testChatStoreGetAPIKey() async throws {
+		guard let chatRouterStore = ChatRouter.instance?.store else {
+			XCTFail()
+			return
+		}
+		ChatGPTAPI.ignoreSavedAPIKey = true
+		await chat.store.dispatch(action: .getAPIKey(chatRouterStore))
+		guard let chatRouterSignal = await ChatRouter.instance?.store.state.signal else {
+			XCTFail()
+			return
+		}
+		XCTAssertEqual(chatRouterSignal, "getAPIKey")
+		guard let mainRouterSignal = await ChatRouter.instance?.store.state.signal else {
+			XCTFail()
+			return
+		}
+		XCTAssertEqual(mainRouterSignal, "getAPIKey")
+	}
+	
 	func testChatStoreSetTestAPIKey() async throws {
 		await chat.store.dispatch(action: .setTestAPIKey(input))
 		let testAPIKey = await chat.store.state.testAPIKey
 		XCTAssertEqual(input, testAPIKey)
 	}
 	
+	func testChatStoreTryTestAPIKey() async throws {
+		let stream = try await api.fetchResponseStream(prompt: "?", store: chat.store)
+		await chat.store.dispatch(action: .tryTestAPIKey(stream, input))
+		let apiKey = await chat.store.state.apiKey
+		XCTAssertEqual(apiKey, input)
+	}
+
 	func testChatSetAPIKey() async throws {
 		await chat.store.dispatch(action: .setAPIKey(input))
 		guard let output = await chat.store.state.apiKey else {
@@ -130,9 +156,9 @@ class ChatStoreTests: XCTestCase {
 	}
 	
 	func testChatStoreSetAPI() async throws {
-		let apiInput = ChatAPI(key: "?")
+		let apiInput = ChatGPTAPI(key: "?")
 		await chat.store.dispatch(action: .setAPI(apiInput))
-		guard let apiOutput = await chat.store.state.api as? ChatAPI else {
+		guard let apiOutput = await chat.store.state.api as? ChatGPTAPI else {
 			XCTFail()
 			return
 		}

@@ -4,11 +4,12 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  Simple splash screen for startup.
+//  SwiftUI splash screen displayed at launch, coordinated by the MainRouter
 
 import SwiftUI
 
 struct SplashUIView: View {
+	
 	@StateObject var router: Router
 	@SwiftUI.State private var promptingForAPIKey = false
 	@SwiftUI.State private var showingAPIKeyError = false

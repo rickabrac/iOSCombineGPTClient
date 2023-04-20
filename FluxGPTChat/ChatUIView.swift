@@ -4,7 +4,7 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  SwiftUI version of the chat interface
+//  SwiftUI implementation of the chat interface
 
 import SwiftUI
 
@@ -51,7 +51,7 @@ struct ChatUIView: View {
 		}
 		guard let api = store.state.api else {
 			Task {
-				await store.dispatch(action: .setAPI(ChatAPI(key: apiKey)))
+				await store.dispatch(action: .setAPI(ChatGPTAPI(key: apiKey)))
 			}
 			return AnyView(EmptyView())
 		}

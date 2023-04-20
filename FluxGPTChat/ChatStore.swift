@@ -4,7 +4,7 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  Single source of truth/state for the app
+//  Single source of truth/state for the chat module
 
 import Foundation
 import SwiftUI
@@ -23,7 +23,6 @@ enum ChatAction {
 	case getAPIKey(RouterStoreType)
 	case setTestAPIKey(String)
 	case tryTestAPIKey(AsyncStream<String>, String)
-	case testAPIKey(String, AsyncStream<String>)
 	case setAPIKey(String)
 	case setAPI(ChatAPIProtocol)
 }
@@ -99,9 +98,6 @@ class ChatStore {
 			case .tryTestAPIKey:
 				// see ChatStore.TryTestAPIKeyAction
 				break
-			case .testAPIKey(let key, let stream):
-				// see ChatStore.TestAPIKeyAction
-				break
 			case .setAPIKey(let key):
 				newState.apiKey = key
 				newState.stream = nil
@@ -155,24 +151,10 @@ class ChatStore {
 			guard case let .getAPIKey(router) = action else {
 				return action
 			}
-			if let key = UserDefaults.standard.object(forKey: ChatAPI.apiKeyDefaultsName) as? String {
+			if let key = ChatGPTAPI.apiKey {
 				return .setAPIKey(key)
 			} else if await router.state.response == nil {
 				await router.dispatch(action: .signal("getAPIKey"))
-			}
-			return action
-		}
-	}
-	
-	//  MARK: ChatStore.TryTestAPIKeyAction
-
-	private class TestAPIKeyAction: Middleware {
-		func callAsFunction(action: ChatAction) async -> ChatAction? {
-			guard case let .testAPIKey(key, stream) = action else {
-				return action
-			}
-			for try await _ in stream {
-				return .setAPIKey(key)
 			}
 			return action
 		}

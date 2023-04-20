@@ -36,9 +36,7 @@ class ChatUIViewTests: XCTestCase {
 		while await store.state.stream != nil {
 			await store.dispatch(action: .streamResponse(stream, store.state.response))
 		}
-		let mainRouter = MainRouter(window, path: "/")
-		let chatRouter = ChatRouter(window, path: "/chat", parent: mainRouter)
-		let chatView = await ChatUIView(router: chatRouter, store: store, prompt: input)
+		let chatView = await ChatUIView(router: ChatRouter.instance!, store: store)
 		await store.dispatch(action: .setAPI(api))
 		vc = await UIHostingController(rootView: chatView)
 		await vc.loadView()

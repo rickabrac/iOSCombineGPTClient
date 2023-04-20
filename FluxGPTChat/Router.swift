@@ -4,34 +4,35 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  State-driven app routing base class.
+//  State-driven app routing / coordination base class. MainRouter and ChatRouter are instances.
 
 import UIKit
 import Combine
 
 class Router: ObservableObject {
+	
 	var window: UIWindow
 	var parent: Router?
 	var store: RouterStoreType
 	var routers: [String : Router] = [:]
-	var views: [String : UIViewController] = [:]
-	private var handlers: [String : RouteSignalHandler] = [:]
+	var viewControllers: [String : UIViewController] = [:]
+	private var handlers: [String : RouterSignalHandlers] = [:]
 	private var path: String
+	private var updated: TimeInterval = 0
 	private var pool = Set<AnyCancellable>()
-	private var updates = 0
 	
 	/// <#Initializer#>
 	///
 	/// - Parameters:
-	///     - window: UIWindow of active view
-	///     - path: relative path possibly including URL-style arguments (e.g. "?foo=bar
-	///		- parent:  parent Router subclass instance
+	///     - window: UIWindow used to display all views
+	///     - path:  absolute path of most recently active route (e.g. "/chat/settings", "/chat", "/getAPIKey")
+	///     - parent:  parent Router subclass instance
 	///     - store: Router subclass instance state machine
 	///
 	required init(_ window: UIWindow, path: String, parent: Router? = nil, store: RouterStoreType = newRouterStore()) {
 		self.window = window
-		self.parent = parent
 		self.path = path
+		self.parent = parent
 		self.store = store
 		Task {
 			await parent?.store.bindStateObserver(route, &pool)
@@ -39,10 +40,17 @@ class Router: ObservableObject {
 		}
 	}
 	
-	/// <#Start router#>
+	/// <#Function signature router signal handlers#>
 	///
-	func start() {
-		fatalError("Router.start: unimplemented by subclass")
+	typealias SignalHandler = ((String, String?) async -> Void)
+	
+	private class RouterSignalHandlers {
+		let upstream: SignalHandler?
+		let downstream: SignalHandler?
+		init(upstream: SignalHandler?, downstream: SignalHandler?) {
+			self.upstream = upstream
+			self.downstream = downstream
+		}
 	}
 	
 	/// <#Register a routing event and RouteSignalHandler for this instance#>
@@ -53,9 +61,15 @@ class Router: ObservableObject {
 	///     - downstream: signal handler for downstream responses
 	///
 	func addSignalHandler( _ signal: String,
-	   upstream: ((String) async -> Void)?,
-	   downstream: ((String, String) async -> Void)?) {
-		handlers[signal] = RouteSignalHandler(upstream: upstream, downstream: downstream)
+	   upstream: SignalHandler?,
+	   downstream: SignalHandler?) {
+		handlers[signal] = RouterSignalHandlers(upstream: upstream, downstream: downstream)
+	}
+	
+	/// <#Start/restart a router#>
+	///
+	func start() {
+		fatalError("Router.start: unimplemented by subclass")
 	}
 	
 	/// <#Set viewController of view window#>
@@ -67,10 +81,17 @@ class Router: ObservableObject {
 		window.rootViewController = vc
 	}
 	
-	func route() {
+	/// <#Respond to a new route request or RouterSignal#>
+	///
+	/// - Parameters:
+	///     - vc: view controller to be assign to active
+	///
+	private func route() {
 		Task {
+			defer {
+				self.updated = NSDate().timeIntervalSince1970
+			}
 			// route request?
-			defer { self.updates = 1 }
 			if await store.state.next.count > 0 {
 				let next = await store.state.next
 				if next == path {
@@ -82,13 +103,8 @@ class Router: ObservableObject {
 				}
 				if module.count > 0 {
 					guard let newRouter = routers[module] else {
-						guard let child = views[module] else {
+						guard let child = viewControllers[module] else {
 							fatalError("Router.route: missing route \(next)")
-						}
-						if let _ = routers[module] {
-							print("dismiss router?")
-						} else if let _ = views[module] {
-							print("dismiss view?")
 						}
 						await store.dispatch(action: .setPath(module))
 						DispatchQueue.main.async {
@@ -110,7 +126,7 @@ class Router: ObservableObject {
 			   await store.state.response == nil,
 			   await parent?.store.state.signal == nil {
 				if let handler = handlers[signal], let upstream = handler.upstream {
-					await upstream(signal)
+					await upstream(signal, nil)
 					return
 				}
 				// if no handler, forward upstream
@@ -131,66 +147,5 @@ class Router: ObservableObject {
 				return
 			}
 		}
-	}
-}
-
-fileprivate class RouteSignalHandler {
-	let upstream: ((String) async -> Void)?
-	let downstream: ((String, String) async -> Void)?
-	init(upstream: ((String) async -> Void)?, downstream: ((String, String) async -> Void)?) {
-		self.upstream = upstream
-		self.downstream = downstream
-	}
-}
-
-struct RouterState: State {
-	var name = ""
-	var path = ""
-	var next = ""
-	var signal: String? = nil
-	var response: String? = nil
-}
-
-enum RouterAction {
-	case setName(_ name: String)
-	case setNext(_ path: String)
-	case setPath(_ path: String)
-	case signal(_ signal: String)
-	case respond(_ response: String)
-	case clearSignal
-	case clearMessage
-}
-
-typealias RouterStoreType = Store<RouterState, RouterAction>
-
-func newRouterStore() -> RouterStoreType {
-	return RouterStoreType { currentState, action in
-		var newState = currentState
-		switch action {
-		case .setName(let name):
-			newState.name = name
-		case .setPath(let path):
-			if path != currentState.path {
-				newState.signal = nil
-//				newState.response = nil
-				newState.next = ""
-				newState.path = path
-			}
-		case .setNext(let next):
-			newState.next = next
-			newState.signal = nil
-		case .signal(let signal):
-			if signal != currentState.signal {
-				newState.signal = signal
-			}
-		case .clearSignal:
-			newState.signal = nil
-			newState.response = nil
-		case .respond(let response):
-			newState.response = response
-		case .clearMessage:
-			newState.response = nil
-		}
-		return newState
 	}
 }

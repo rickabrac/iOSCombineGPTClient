@@ -1,10 +1,10 @@
 //
-//  GPTChatAPI.swift
+//  ChatGPTAPI.swift
 //  FluxGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  GPT-3 API that returns results using ChatStore and AsyncStream
+//  This Chat GPT-3 API fetches results from OpenAI and streams responses using AsyncStream and ChatStore.
 
 import Foundation
 import Combine
@@ -13,15 +13,26 @@ protocol ChatAPIProtocol {
 	func fetchResponseStream(prompt: String, store: ChatStoreType) async throws -> AsyncStream<String>
 }
 
-class ChatAPI: ChatAPIProtocol {
+class ChatGPTAPI: ChatAPIProtocol {
 	private let model = "gpt-3.5-turbo"
 	private let systemMessage = Message(role: "system", content: "You are my helpful AI assistant.")
 	private let temperature = 0.5
 	private var historyList = [Message]()
 	private let urlSession = URLSession.shared
 	private var cancellables = Set<AnyCancellable>()
-	static let apiKeyDefaultsName = "GPT3_API_KEY"
 	private var key = ""
+	
+	static let apiKeyDefaultsName = "GPT3_API_KEY"
+	static var ignoreSavedAPIKey = false
+	static var apiKey: String? {
+		if ignoreSavedAPIKey {
+			return nil
+		}
+		guard let apiKey = UserDefaults.standard.object(forKey: apiKeyDefaultsName) as? String else {
+			return nil
+		}
+		return apiKey
+	}
 	
 	init(key: String) {
 		self.key = key
@@ -119,8 +130,8 @@ class ChatAPI: ChatAPIProtocol {
 
 // MARK: ChatAPI Equatable conformance
 
-extension ChatAPI: Equatable {
-	static func == (lhs: ChatAPI, rhs: ChatAPI) -> Bool {
+extension ChatGPTAPI: Equatable {
+	static func == (lhs: ChatGPTAPI, rhs: ChatGPTAPI) -> Bool {
 		lhs.key == rhs.key
 	}
 }
