@@ -1,6 +1,6 @@
 ## Description
 
-• This GPT client app for iOS features a modern, reactive, unidirectional dataflow architecture, implemented in Combine.
+• This GPT client for iOS features a modern, reactive, unidirectional dataflow architecture, implemented in Combine.
 
 ## Notes
 
