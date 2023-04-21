@@ -1,6 +1,6 @@
 //
 //  GetKeyView.swift
-//  CombineGPTChat
+//  CombineGPTClient
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
@@ -105,8 +105,14 @@ struct GetKeyView: View {
 			}
 			VStack {
 				Spacer()
-				Text(error)
-					.foregroundColor(.red)
+				HStack {
+					Spacer()
+						.frame(width: 20)
+					Text(error)
+						.foregroundColor(.red)
+					Spacer()
+						.frame(width: 20)
+				}
 				Spacer()
 				Spacer()
 				Spacer()

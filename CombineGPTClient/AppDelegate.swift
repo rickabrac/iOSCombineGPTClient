@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  CombineGPTChat
+//  CombineGPTClient
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 

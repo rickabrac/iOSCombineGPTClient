@@ -1,11 +1,11 @@
 //
 //  MockChatAPI.swift
-//  CombineGPTChatTests
+//  CombineGPTClientTests
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
 import Foundation
-@testable import CombineGPTChat
+@testable import CombineGPTClient
 
 class MockChatAPI: ChatAPIProtocol {
 	private let cannedResponseFileName: String

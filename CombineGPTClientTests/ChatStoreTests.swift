@@ -1,12 +1,12 @@
 //
 //  ChatStoreTests.swift
-//  CombineGPTChatTests
+//  CombineGPTClientTests
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
 import XCTest
 import Combine
-@testable import CombineGPTChat
+@testable import CombineGPTClient
 
 class ChatStoreTests: XCTestCase {
 	

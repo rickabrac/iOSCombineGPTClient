@@ -1,6 +1,6 @@
 //
 //  ChatViewTests.swift
-//  CombineGPTChatTests
+//  CombineGPTClientTests
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
@@ -8,7 +8,7 @@ import XCTest
 import SnapshotTesting
 import SwiftUI
 import Combine
-@testable import CombineGPTChat
+@testable import CombineGPTClient
 
 class ChatViewTests: XCTestCase {
 	

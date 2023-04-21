@@ -1,11 +1,11 @@
 //
 //  RouterStoreTests.swift
-//  CombineGPTChatTests
+//  CombineGPTClientTests
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
 import XCTest
-@testable import CombineGPTChat
+@testable import CombineGPTClient
 
 class RouterStoreTests: XCTestCase {
 	let input = "test"

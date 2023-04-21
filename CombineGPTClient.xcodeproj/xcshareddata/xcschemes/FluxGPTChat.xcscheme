@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1DB9915429E36672005E5C75"
-               BuildableName = "CombineGPTChat.app"
-               BlueprintName = "CombineGPTChat"
-               ReferencedContainer = "container:CombineGPTChat.xcodeproj">
+               BuildableName = "CombineGPTClient.app"
+               BlueprintName = "CombineGPTClient"
+               ReferencedContainer = "container:CombineGPTClient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1DB9916A29E36676005E5C75"
-               BuildableName = "CombineGPTChatTests.xctest"
-               BlueprintName = "CombineGPTChatTests"
-               ReferencedContainer = "container:CombineGPTChat.xcodeproj">
+               BuildableName = "CombineGPTClientTests.xctest"
+               BlueprintName = "CombineGPTClientTests"
+               ReferencedContainer = "container:CombineGPTClient.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1DB9915429E36672005E5C75"
-            BuildableName = "CombineGPTChat.app"
-            BlueprintName = "CombineGPTChat"
-            ReferencedContainer = "container:CombineGPTChat.xcodeproj">
+            BuildableName = "CombineGPTClient.app"
+            BlueprintName = "CombineGPTClient"
+            ReferencedContainer = "container:CombineGPTClient.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1DB9915429E36672005E5C75"
-            BuildableName = "CombineGPTChat.app"
-            BlueprintName = "CombineGPTChat"
-            ReferencedContainer = "container:CombineGPTChat.xcodeproj">
+            BuildableName = "CombineGPTClient.app"
+            BlueprintName = "CombineGPTClient"
+            ReferencedContainer = "container:CombineGPTClient.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
