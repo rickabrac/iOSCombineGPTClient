@@ -12,7 +12,7 @@
 
 • The project introduces an extensible, reactive routing/coordination framework, also implemented in Combine.
 
-• Flow control is described here: http://tyler.org/iOSCombineGPTApp/FlowControl.pngo
+• Flow control is described here: http://tyler.org/iOSCombineGPTClient/FlowControl.pngo
 
 • SwiftUI Views and UIViewControllers are tested using swift-snapshot-testing via the Swift Package Manager.
   
