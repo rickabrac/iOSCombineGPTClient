@@ -9,4 +9,5 @@ This app uses unidirectional data flow to manage state and is implemented in pur
 • SwiftUI autoscrolling not working (at least in Xcode 13.2.1 / iOS 15.2)
 
 
-<img src="https://github.com/rickabrac/iOSCombineGPTChat/FlowControl.png" width="200" />
+
+<img src="<https://github.com/rickabrac/iOSCombineGPTChat/blob/main/ControlFlow.png" width="200" />
