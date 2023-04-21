@@ -6,11 +6,11 @@
 
 • Store.swift (state machine implementation) is adapted from https://obscuredpixels.com/managing-view-state-with-combine.
 
-• Chat interface is implemented in declarative UIKit and SwiftUI to demonstrate integration of both techniques.
+• The chat interface is implemented in declarative UIKit and SwiftUI to demonstrate integration of both techniques.
 
 • The project does not use storyboards because they combine view and navigation specification, which is unwieldy in large apps.
 
-• The project introduces an extensible, reactive routing/coordination framework.
+• The project introduces an extensible, reactive routing/coordination framework, also implemented in Combine.
 
 • Flow control is described here: http://tyler.org/iOSCombineGPTApp/FlowControl.pngo
 
