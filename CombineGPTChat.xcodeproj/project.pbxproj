@@ -71,7 +71,7 @@
 		1DB9920929E4D57F005E5C75 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		1DB9920D29E78D5F005E5C75 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		1DB9920F29E78D7A005E5C75 /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
-		1DD1C8EF29F3208C008198CB /* ControlFlow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ControlFlow.png; path = CombineGPTChat/ControlFlow.png; sourceTree = "<group>"; };
+		1DD1C8F029F32719008198CB /* ControlFlow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ControlFlow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +96,8 @@
 		1DB9914C29E36672005E5C75 = {
 			isa = PBXGroup;
 			children = (
+				1DD1C8F029F32719008198CB /* ControlFlow.png */,
 				1DB991B029E4AEC8005E5C75 /* README.md */,
-				1DD1C8EF29F3208C008198CB /* ControlFlow.png */,
 				1DB9915729E36672005E5C75 /* CombineGPTChat */,
 				1DB9916E29E36676005E5C75 /* CombineGPTChatTests */,
 				1DB9915629E36672005E5C75 /* Products */,
