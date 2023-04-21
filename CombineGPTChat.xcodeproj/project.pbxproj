@@ -114,7 +114,6 @@
 		1DB9915729E36672005E5C75 /* CombineGPTChat */ = {
 			isa = PBXGroup;
 			children = (
-				1D73105E29EA19A600884CAD /* Common.swift */,
 				1D73105C29EA19A600884CAD /* Store.swift */,
 				1DB40A3029F1C43E0065D919 /* RouterStore.swift */,
 				1D73105D29EA19A600884CAD /* Router.swift */,
@@ -124,9 +123,10 @@
 				1DB9919629E36746005E5C75 /* ChatTabView.swift */,
 				1DB9918D29E36746005E5C75 /* ChatView.swift */,
 				1DB9919429E36746005E5C75 /* ChatViewController.swift */,
+				1DB9918A29E36746005E5C75 /* ChatGPTAPI.swift */,
 				1DB9920929E4D57F005E5C75 /* SplashView.swift */,
 				1DB40A2C29EDCDDC0065D919 /* GPTKeyView.swift */,
-				1DB9918A29E36746005E5C75 /* ChatGPTAPI.swift */,
+				1D73105E29EA19A600884CAD /* Common.swift */,
 				1DB991A629E3692D005E5C75 /* AppDelegate.swift */,
 				1DB991ED29E4B5DC005E5C75 /* LaunchScreen.storyboard */,
 				1DB9916629E36675005E5C75 /* Info.plist */,
