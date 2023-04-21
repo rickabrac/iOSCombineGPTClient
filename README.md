@@ -4,9 +4,9 @@ This app uses unidirectional data flow to manage state and is implemented in pur
 
 • State machine (Store.swift) adapted from https://obscuredpixels.com/managing-view-state-with-combine
 
-## Flow Control
+## Extensible Control Flow
 
-<img src="http://tyler.org/iOSCombineGPTApp/ControlFlow.png" width="200" />
+• http://tyler.org/iOSCombineGPTApp/ControlFlow.png
   
 ## To-Do
 
