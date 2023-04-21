@@ -1,18 +1,18 @@
 ## Description
 
-• GPT iOS client app featuring a modern, reactive, unidirectional dataflow architecture, implemented in Combine.
+• This GPT iPhone client app features a modern, reactive, unidirectional dataflow architecture, implemented in Combine.
 
 ## Notes
 
 • Store.swift (state machine implementation) is adapted from https://obscuredpixels.com/managing-view-state-with-combine
 
-• The chat interface is implemented in both declarative UIKit and SwiftUI to demonostrate integration of both techniques.
+• The chat interface is implemented both in declarative UIKit and SwiftUI to demonostrate integration of both techniques.
 
-• The project intentionally omits storyboards because they combine view and navigation specification, which I avoid.
+• The project intentionally avoids using storyboards because they combine both view and navigation specification, which can become unwieldy in a large app.
 
 • The project introduces an extensible, reactive routing/coordination framework.
 
-• Flow control diagram is here: http://tyler.org/iOSCombineGPTApp/FlowControl.png
+• Flow control diagram can be found here: http://tyler.org/iOSCombineGPTApp/FlowControl.png
   
 ## To-Do
 
