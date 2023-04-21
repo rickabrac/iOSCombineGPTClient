@@ -12,7 +12,9 @@
 
 • The project introduces my extensible, reactive routing/coordination framework.
 
-• Flow control is described here: http://tyler.org/iOSCombineGPTApp/FlowControl.png
+• Flow control is described here: http://tyler.org/iOSCombineGPTApp/FlowControl.pngo
+
+• SwiftUI Views and UIViewControllers are tested using swift-snapshot-testing from Swift Package Manager.
   
 ## To-Do
 
