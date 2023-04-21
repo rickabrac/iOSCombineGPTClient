@@ -2,7 +2,7 @@
 
 This app uses unidirectional data flow to manage all and is implemented with Combine.
 
-• Store.swift (finite state-machine) adapted from https://obscuredpixels.com/managing-view-state-with-combine
+• Store.swift (finite state machine) adapted from https://obscuredpixels.com/managing-view-state-with-combine
 
 ## Extensible Control Flow
 
