@@ -11,7 +11,7 @@ import SnapshotTesting
 class ChatViewControllerTests: XCTestCase {
 	
 	var chat: ChatStore? = nil
-	let main = MainRouter(UIWindow(), path: "/")
+	let main = AppRouter(UIWindow(), path: "/")
 	var router: ChatRouter? = nil
 	var vc: ChatViewController? = nil
 	let input = "This is a test"

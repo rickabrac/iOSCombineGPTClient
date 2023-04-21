@@ -4,7 +4,7 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  SwiftUI splash screen that is briefly displayed at launch, coordinated by MainRouter
+//  SwiftUI splash screen that is briefly displayed at launch, coordinated by AppRouter
 
 import SwiftUI
 

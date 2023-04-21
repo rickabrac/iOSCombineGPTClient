@@ -126,11 +126,11 @@ class ChatStoreTests: XCTestCase {
 			return
 		}
 		XCTAssertEqual(chatRouterSignal, "getGPTKey")
-		guard let mainRouterSignal = await ChatRouter.instance?.store.state.signal else {
+		guard let appRouterSignal = await ChatRouter.instance?.store.state.signal else {
 			XCTFail()
 			return
 		}
-		XCTAssertEqual(mainRouterSignal, "getGPTKey")
+		XCTAssertEqual(appRouterSignal, "getGPTKey")
 	}
 	
 	func testChatStoreSetTestAPIKey() async throws {

@@ -1,5 +1,5 @@
 //
-//  MainRouter.swift
+//  AppRouter.swift
 //  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
@@ -9,15 +9,15 @@
 import SwiftUI
 import Combine
 
-class MainRouter: Router {
+class AppRouter: Router {
 	
 	private var splashViewController: UIViewController? = nil
-	static var instance: MainRouter?
+	static var instance: AppRouter?
 	
 	required init(_ window: UIWindow, path: String, parent: Router? = nil, store: RouterStoreType = newRouterStore()) {
 		super.init(window, path: path, parent: parent, store: store)
-		assert(parent == nil, "MainRouter.init: parent should be nil")
-		assert(path == "/", "MainRouter.init: path should be \"/\"")
+		assert(parent == nil, "AppRouter.init: parent should be nil")
+		assert(path == "/", "AppRouter.init: path should be \"/\"")
 		routers["chat"] = ChatRouter(window, path: "/chat", parent: self)
 		viewControllers["getGPTKey"] = UIHostingController(rootView: GPTKeyView(router: self, store: ChatStore.store))
 		addSignalHandler("getGPTKey",
@@ -33,7 +33,7 @@ class MainRouter: Router {
 		Task {
 			await routers["chat"]?.store.dispatch(action: .setName("chat"))
 		}
-		MainRouter.instance = self
+		AppRouter.instance = self
 	}
 	
 	override func start() {

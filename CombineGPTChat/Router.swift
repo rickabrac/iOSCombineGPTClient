@@ -4,7 +4,7 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  State-driven app router base class. MainRouter and ChatRouter are derived instances.
+//  State-driven app router base class. AppRouter and ChatRouter are derived instances.
 //  Routers function in lieu of traditional coordinators in my architecture.
 
 import UIKit

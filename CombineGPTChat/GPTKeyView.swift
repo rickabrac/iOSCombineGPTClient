@@ -4,7 +4,7 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  SwiftUI view that prompts for and validates a GPT-3 API Key, coordinated by MainRouter.
+//  SwiftUI view that prompts for and validates a GPT-3 API Key, coordinated by AppRouter.
 
 import SwiftUI
 

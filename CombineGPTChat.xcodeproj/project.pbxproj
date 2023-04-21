@@ -29,7 +29,7 @@
 		1DB9920529E4B866005E5C75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DB9920429E4B865005E5C75 /* Assets.xcassets */; };
 		1DB9920829E4BC03005E5C75 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 1DB9920729E4BC03005E5C75 /* SnapshotTesting */; };
 		1DB9920A29E4D57F005E5C75 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9920929E4D57F005E5C75 /* SplashView.swift */; };
-		1DB9920E29E78D5F005E5C75 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9920D29E78D5F005E5C75 /* MainRouter.swift */; };
+		1DB9920E29E78D5F005E5C75 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9920D29E78D5F005E5C75 /* AppRouter.swift */; };
 		1DB9921029E78D7A005E5C75 /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9920F29E78D7A005E5C75 /* ChatRouter.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,8 +69,9 @@
 		1DB9920029E4B797005E5C75 /* TestResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestResponse.json; sourceTree = "<group>"; };
 		1DB9920429E4B865005E5C75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DB9920929E4D57F005E5C75 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		1DB9920D29E78D5F005E5C75 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		1DB9920D29E78D5F005E5C75 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		1DB9920F29E78D7A005E5C75 /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
+		1DD1C8EF29F3208C008198CB /* ControlFlow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ControlFlow.png; path = CombineGPTChat/ControlFlow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				1DB991B029E4AEC8005E5C75 /* README.md */,
+				1DD1C8EF29F3208C008198CB /* ControlFlow.png */,
 				1DB9915729E36672005E5C75 /* CombineGPTChat */,
 				1DB9916E29E36676005E5C75 /* CombineGPTChatTests */,
 				1DB9915629E36672005E5C75 /* Products */,
@@ -115,19 +117,19 @@
 			isa = PBXGroup;
 			children = (
 				1D73105E29EA19A600884CAD /* Common.swift */,
+				1D73105C29EA19A600884CAD /* Store.swift */,
 				1DB40A3029F1C43E0065D919 /* RouterStore.swift */,
 				1D73105D29EA19A600884CAD /* Router.swift */,
-				1DB9920929E4D57F005E5C75 /* SplashView.swift */,
-				1DB40A2C29EDCDDC0065D919 /* GPTKeyView.swift */,
-				1DB9920D29E78D5F005E5C75 /* MainRouter.swift */,
-				1DB9918B29E36746005E5C75 /* ChatStore.swift */,
+				1DB9920D29E78D5F005E5C75 /* AppRouter.swift */,
 				1DB9920F29E78D7A005E5C75 /* ChatRouter.swift */,
-				1DB9918A29E36746005E5C75 /* ChatGPTAPI.swift */,
+				1DB9918B29E36746005E5C75 /* ChatStore.swift */,
 				1DB9919629E36746005E5C75 /* ChatTabView.swift */,
 				1DB9918D29E36746005E5C75 /* ChatView.swift */,
 				1DB9919429E36746005E5C75 /* ChatViewController.swift */,
+				1DB9920929E4D57F005E5C75 /* SplashView.swift */,
+				1DB40A2C29EDCDDC0065D919 /* GPTKeyView.swift */,
+				1DB9918A29E36746005E5C75 /* ChatGPTAPI.swift */,
 				1DB991A629E3692D005E5C75 /* AppDelegate.swift */,
-				1D73105C29EA19A600884CAD /* Store.swift */,
 				1DB991ED29E4B5DC005E5C75 /* LaunchScreen.storyboard */,
 				1DB9916629E36675005E5C75 /* Info.plist */,
 				1DB9920429E4B865005E5C75 /* Assets.xcassets */,
@@ -261,7 +263,7 @@
 			files = (
 				1DB9919929E36746005E5C75 /* ChatGPTAPI.swift in Sources */,
 				1DB9919A29E36746005E5C75 /* ChatStore.swift in Sources */,
-				1DB9920E29E78D5F005E5C75 /* MainRouter.swift in Sources */,
+				1DB9920E29E78D5F005E5C75 /* AppRouter.swift in Sources */,
 				1DB9920A29E4D57F005E5C75 /* SplashView.swift in Sources */,
 				1D73106029EA19A600884CAD /* Router.swift in Sources */,
 				1DB991A829E3692D005E5C75 /* AppDelegate.swift in Sources */,
