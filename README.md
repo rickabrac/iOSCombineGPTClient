@@ -6,7 +6,7 @@ This app uses unidirectional data flow to manage all and is implemented with Com
 
 ## Extensible Flow Control
 
-• http://tyler.org/iOSCombineGPTApp/ExtensibleFlowControl.png
+• http://tyler.org/iOSCombineGPTApp/FlowControl.png
   
 ## To-Do
 
