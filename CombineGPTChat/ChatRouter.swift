@@ -27,7 +27,7 @@ class ChatRouter: Router {
 				guard let apiKey = response?.components(separatedBy: ":").last else {
 					fatalError("ChatRouter.upstream: failed to unwrap apiKey response")
 				}
-				UserDefaults.standard.set(apiKey, forKey: ChatGPTAPI.apiKeyDefaultsName)
+				UserDefaults.standard.set(apiKey, forKey: ChatAPI.apiKeyDefaultsName)
 				self.start()
 			}
 		)

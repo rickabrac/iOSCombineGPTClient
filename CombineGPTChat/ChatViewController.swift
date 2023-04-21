@@ -297,10 +297,10 @@ extension ChatViewController: UITextFieldDelegate {
 		response.text = ""
 		Task {
 			if chat.store.state.api == nil {
-				guard let key = ChatGPTAPI.apiKey else {
+				guard let key = ChatAPI.apiKey else {
 					fatalError("ChatViewController.textFieldShouldReturn: failed to unwrap api key")
 				}
-				await chat.store.dispatch(action: .setAPI(ChatGPTAPI(key: key)))
+				await chat.store.dispatch(action: .setAPI(ChatAPI(key: key)))
 			}
 			guard let api = chat.store.state.api else {
 				fatalError("ChatViewController.textFieldShouldReturn: failed to unwrap api")

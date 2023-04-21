@@ -1,5 +1,5 @@
 //
-//  GPTKeyView.swift
+//  GetKeyView.swift
 //  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct GPTKeyView: View {
+struct GetKeyView: View {
 	
 	@StateObject var router: Router
 	@StateObject var store: ChatStoreType
@@ -41,7 +41,7 @@ struct GPTKeyView: View {
 					if let stream = store.state.stream {
 						await store.dispatch(action: .tryTestAPIKey(stream, testKey))
 					} else {
-						let api = ChatGPTAPI(key: testKey)
+						let api = ChatAPI(key: testKey)
 						let stream = try await api.fetchResponseStream(prompt: "", store: store)
 						await store.dispatch(action: .setStream(stream))
 					}

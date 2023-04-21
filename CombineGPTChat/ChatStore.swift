@@ -152,7 +152,7 @@ class ChatStore {
 			guard case let .getGPTKey(router) = action else {
 				return action
 			}
-			if let key = ChatGPTAPI.apiKey {
+			if let key = ChatAPI.apiKey {
 				return .setAPIKey(key)
 			} else if await router.state.response == nil {
 				await router.dispatch(action: .signal("getGPTKey"))

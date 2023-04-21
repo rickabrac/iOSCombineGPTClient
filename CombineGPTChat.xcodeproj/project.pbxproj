@@ -10,10 +10,10 @@
 		1D73105F29EA19A600884CAD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105C29EA19A600884CAD /* Store.swift */; };
 		1D73106029EA19A600884CAD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105D29EA19A600884CAD /* Router.swift */; };
 		1D73106129EA19A600884CAD /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105E29EA19A600884CAD /* Common.swift */; };
-		1DB40A2D29EDCDDC0065D919 /* GPTKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A2C29EDCDDC0065D919 /* GPTKeyView.swift */; };
+		1DB40A2D29EDCDDC0065D919 /* GetKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */; };
 		1DB40A2F29F1BE370065D919 /* RouterStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A2E29F1BE370065D919 /* RouterStoreTests.swift */; };
 		1DB40A3129F1C43E0065D919 /* RouterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A3029F1C43E0065D919 /* RouterStore.swift */; };
-		1DB9919929E36746005E5C75 /* ChatGPTAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918A29E36746005E5C75 /* ChatGPTAPI.swift */; };
+		1DB9919929E36746005E5C75 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918A29E36746005E5C75 /* ChatAPI.swift */; };
 		1DB9919A29E36746005E5C75 /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918B29E36746005E5C75 /* ChatStore.swift */; };
 		1DB9919C29E36746005E5C75 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918D29E36746005E5C75 /* ChatView.swift */; };
 		1DB991A329E36746005E5C75 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9919429E36746005E5C75 /* ChatViewController.swift */; };
@@ -47,13 +47,13 @@
 		1D73105C29EA19A600884CAD /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1D73105D29EA19A600884CAD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1D73105E29EA19A600884CAD /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		1DB40A2C29EDCDDC0065D919 /* GPTKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTKeyView.swift; sourceTree = "<group>"; };
+		1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKeyView.swift; sourceTree = "<group>"; };
 		1DB40A2E29F1BE370065D919 /* RouterStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStoreTests.swift; sourceTree = "<group>"; };
 		1DB40A3029F1C43E0065D919 /* RouterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStore.swift; sourceTree = "<group>"; };
 		1DB9915529E36672005E5C75 /* CombineGPTChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineGPTChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB9916629E36675005E5C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DB9916B29E36676005E5C75 /* CombineGPTChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CombineGPTChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DB9918A29E36746005E5C75 /* ChatGPTAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatGPTAPI.swift; sourceTree = "<group>"; };
+		1DB9918A29E36746005E5C75 /* ChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		1DB9918B29E36746005E5C75 /* ChatStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
 		1DB9918D29E36746005E5C75 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		1DB9919429E36746005E5C75 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -123,9 +123,9 @@
 				1DB9919629E36746005E5C75 /* ChatTabView.swift */,
 				1DB9918D29E36746005E5C75 /* ChatView.swift */,
 				1DB9919429E36746005E5C75 /* ChatViewController.swift */,
-				1DB9918A29E36746005E5C75 /* ChatGPTAPI.swift */,
+				1DB9918A29E36746005E5C75 /* ChatAPI.swift */,
 				1DB9920929E4D57F005E5C75 /* SplashView.swift */,
-				1DB40A2C29EDCDDC0065D919 /* GPTKeyView.swift */,
+				1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */,
 				1D73105E29EA19A600884CAD /* Common.swift */,
 				1DB991A629E3692D005E5C75 /* AppDelegate.swift */,
 				1DB991ED29E4B5DC005E5C75 /* LaunchScreen.storyboard */,
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DB9919929E36746005E5C75 /* ChatGPTAPI.swift in Sources */,
+				1DB9919929E36746005E5C75 /* ChatAPI.swift in Sources */,
 				1DB9919A29E36746005E5C75 /* ChatStore.swift in Sources */,
 				1DB9920E29E78D5F005E5C75 /* AppRouter.swift in Sources */,
 				1DB9920A29E4D57F005E5C75 /* SplashView.swift in Sources */,
@@ -271,7 +271,7 @@
 				1D73106129EA19A600884CAD /* Common.swift in Sources */,
 				1DB9921029E78D7A005E5C75 /* ChatRouter.swift in Sources */,
 				1DB991A329E36746005E5C75 /* ChatViewController.swift in Sources */,
-				1DB40A2D29EDCDDC0065D919 /* GPTKeyView.swift in Sources */,
+				1DB40A2D29EDCDDC0065D919 /* GetKeyView.swift in Sources */,
 				1DB9919C29E36746005E5C75 /* ChatView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -51,7 +51,7 @@ struct ChatView: View {
 		}
 		guard let api = store.state.api else {
 			Task {
-				await store.dispatch(action: .setAPI(ChatGPTAPI(key: apiKey)))
+				await store.dispatch(action: .setAPI(ChatAPI(key: apiKey)))
 			}
 			return AnyView(EmptyView())
 		}

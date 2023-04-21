@@ -19,10 +19,10 @@ class AppRouter: Router {
 		assert(parent == nil, "AppRouter.init: parent should be nil")
 		assert(path == "/", "AppRouter.init: path should be \"/\"")
 		routers["chat"] = ChatRouter(window, path: "/chat", parent: self)
-		viewControllers["getGPTKey"] = UIHostingController(rootView: GPTKeyView(router: self, store: ChatStore.store))
+		viewControllers["getGPTKey"] = UIHostingController(rootView: GetKeyView(router: self, store: ChatStore.store))
 		addSignalHandler("getGPTKey",
 			upstream: { (_,_) in
-				if let key = ChatGPTAPI.apiKey {
+				if let key = ChatAPI.apiKey {
 					await store.dispatch(action: .respond(key))
 				} else if await store.state.path != "getGPTKey" {
 					await store.dispatch(action: .setNext("/getGPTKey"))
