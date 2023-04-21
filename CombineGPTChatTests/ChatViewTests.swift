@@ -1,6 +1,6 @@
 //
-//  ChatUIViewTests.swift
-//  FluxGPTChatTests
+//  ChatViewTests.swift
+//  CombineGPTChatTests
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 @testable import CombineGPTChat
 
-class ChatUIViewTests: XCTestCase {
+class ChatViewTests: XCTestCase {
 	
 	let window = UIWindow()
 	var vc: UIViewController!
@@ -30,19 +30,20 @@ class ChatUIViewTests: XCTestCase {
 	func asyncSetUpWithError(_ cannedResponseFileName: String) async throws {
 		let store = ChatStore().store
 		let api = MockChatAPI("TestResponse.json")
+		await store.dispatch(action: .setAPI(api))	// skip APIKeyView flow
 		let stream = try await api.fetchResponseStream(prompt: input, store: store)
-		await  store.dispatch(action: .setPrompt(input))
-		await  store.dispatch(action: .setStream(stream))
+		await store.dispatch(action: .setPrompt(input))
+		await store.dispatch(action: .setStream(stream))
 		while await store.state.stream != nil {
 			await store.dispatch(action: .streamResponse(stream, store.state.response))
 		}
-		let chatView = await ChatUIView(router: ChatRouter.instance!, store: store)
+		let chatView = await ChatView(router: ChatRouter.instance!, store: store)
 		await store.dispatch(action: .setAPI(api))
 		vc = await UIHostingController(rootView: chatView)
 		await vc.loadView()
 	}
 
-    func test_ChatUIView_NormalResponse_Snapshot_Light() async throws {
+    func test_ChatView_NormalResponse_Snapshot_Light() async throws {
 		try await asyncSetUpWithError("TestResponse.json")
 		let snapshotTaken = XCTestExpectation()
 		DispatchQueue.main.async {
@@ -53,7 +54,7 @@ class ChatUIViewTests: XCTestCase {
 		wait(for: [snapshotTaken], timeout: 10)
     }
 	
-	func test_ChatUIView_NormalResponse_Snapshot_Dark() async throws {
+	func test_ChatView_NormalResponse_Snapshot_Dark() async throws {
 		try await asyncSetUpWithError("TestResponse.json")
 		let snapshotTaken = XCTestExpectation()
 		DispatchQueue.main.async {

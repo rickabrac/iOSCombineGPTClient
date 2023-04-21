@@ -1,15 +1,15 @@
 //
-//  ChatTabUIView.swift
-//  FluxGPTChat
+//  ChatTabView.swift
+//  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  SwiftUI tab view allows the user to switch between ChatUIView and ChatViewController,
-//  coodidnated by ChatRouter.
+//  SwiftUI tab view allows the user to switch between ChatView and ChatViewController,
+//  coordinated by ChatRouter.
 
 import SwiftUI
 
-struct ChatTabUIView: View {
+struct ChatTabView: View {
 	@StateObject var router: Router
 	@SwiftUI.State private var selectedTab = "SwiftUI"
 
@@ -21,7 +21,7 @@ struct ChatTabUIView: View {
 	
     var body: some View {
 		TabView {
-			ChatUIView(router: router)
+			ChatView(router: router)
 				.onTapGesture {
 					selectedTab = "SwiftUI"
 				}
@@ -30,7 +30,7 @@ struct ChatTabUIView: View {
 				}
 				.tag("SwiftUI")
 
-			ChatViewControllerUIView(router: router as! ChatRouter, chat: ChatStore.store)
+			ChatSwiftUIViewController(router: router as! ChatRouter, chat: ChatStore.store)
 				.onTapGesture {
 					selectedTab = "UIKit"
 				}
@@ -45,6 +45,6 @@ struct ChatTabUIView: View {
 
 //struct RootView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ChatTabUIView()
+//        ChatTabView()
 //    }
 //}

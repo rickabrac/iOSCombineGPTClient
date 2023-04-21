@@ -1,14 +1,14 @@
 //
-//  APIKeyUIView.swift
-//  FluxGPTChat
+//  GPTKeyView.swift
+//  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  SwiftUI view prompts for and validates GPT-3 API Key, coordinated by the MainRouter.
+//  SwiftUI view that prompts for and validates a GPT-3 API Key, coordinated by MainRouter.
 
 import SwiftUI
 
-struct APIKeyUIView: View {
+struct GPTKeyView: View {
 	
 	@StateObject var router: Router
 	@StateObject var store: ChatStoreType

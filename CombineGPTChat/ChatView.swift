@@ -1,6 +1,6 @@
 //
-//  ChatUIView.swift
-//  FluxGPTChat
+//  ChatView.swift
+//  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ChatUIView: View {
+struct ChatView: View {
 	@StateObject var router: Router
 	@StateObject var store: ChatStoreType
 	@SwiftUI.State private var prompt = ""
@@ -23,13 +23,13 @@ struct ChatUIView: View {
 		self._prompt = .init(initialValue: prompt)
 		Task {
 			await store.dispatch(action: .setRouter(router.store))
-			await store.dispatch(action: .getAPIKey(router.store))
+			await store.dispatch(action: .getGPTKey(router.store))
 		}
 	}
 	
 	private func progressView() -> some View {
 		if let signal = router.store.state.signal, let message = router.store.state.response {
-			if signal == "getAPIKey", message.starts(with: "apiKey:") {
+			if signal == "getGPTKey", message.starts(with: "apiKey:") {
 				if let apiKey = message.components(separatedBy: ":").last {
 					Task {
 						await store.dispatch(action: .setAPIKey(apiKey))
@@ -37,13 +37,13 @@ struct ChatUIView: View {
 					}
 				}
 			} else {
-				fatalError("ChatUIView.progressView: unknown router message (\(message))")
+				fatalError("ChatView.progressView: unknown router message (\(message))")
 			}
 		}
 		guard let apiKey = store.state.apiKey else {
 			guard let _ = router.store.state.signal else {
 				Task {
-					await store.dispatch(action: .getAPIKey(router.store))
+					await store.dispatch(action: .getGPTKey(router.store))
 				}
 				return AnyView(EmptyView())
 			}

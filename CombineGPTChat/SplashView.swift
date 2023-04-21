@@ -1,14 +1,14 @@
 //
-//  SplashUIView.swift
-//  FluxGPTChat
+//  SplashView.swift
+//  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  SwiftUI splash screen displayed at launch, coordinated by the MainRouter
+//  SwiftUI splash screen that is briefly displayed at launch, coordinated by MainRouter
 
 import SwiftUI
 
-struct SplashUIView: View {
+struct SplashView: View {
 	
 	@StateObject var router: Router
 	@SwiftUI.State private var promptingForAPIKey = false
@@ -22,7 +22,7 @@ struct SplashUIView: View {
 	}
 	
 	private func refreshView() -> some View {
-		print("SplashUIView.refreshView()")
+		print("SplashView.refreshView()")
 		return AnyView(EmptyView())
 	}
 	
@@ -38,8 +38,8 @@ struct SplashUIView: View {
     }
 }
 
-//struct SplashUIView_Previews: PreviewProvider {
+//struct SplashView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        SplashUIView()
+//        SplashView()
 //    }
 //}

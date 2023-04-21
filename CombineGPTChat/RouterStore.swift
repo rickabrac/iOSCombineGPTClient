@@ -1,10 +1,10 @@
 //
 //  RouterStore.swift
-//  FluxGPTChat
+//  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  Router/coordinator store (state-machine)
+//  Router state machine
 
 import Foundation
 

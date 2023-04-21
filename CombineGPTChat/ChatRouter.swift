@@ -1,17 +1,17 @@
 //
 //  ChatRouter.swift
-//  FluxGPTChat
+//  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  This subclass of Router coordinates SplashUIView and ChatTabUIView.
+//  Router subclass that coordinates ChatTabView.
 
 import SwiftUI
 import Combine
 
 class ChatRouter: Router {
 	
-	private var chatTabUIViewController = UIViewController()
+	private var chatTabViewController = UIViewController()
 	static var instance: ChatRouter?
 
 	required init(_ window: UIWindow, path: String, parent: Router?, store: RouterStoreType = newRouterStore()) {
@@ -22,7 +22,7 @@ class ChatRouter: Router {
 		if let module = path.components(separatedBy: "/").last, module != "chat" {
 			fatalError("ChatRouter.init: wrong module (\(module)")
 		}
-		addSignalHandler("getAPIKey", upstream: nil,
+		addSignalHandler("getGPTKey", upstream: nil,
 			downstream: { (signal, response) in
 				guard let apiKey = response?.components(separatedBy: ":").last else {
 					fatalError("ChatRouter.upstream: failed to unwrap apiKey response")
@@ -36,8 +36,8 @@ class ChatRouter: Router {
 	
 	override func start() {
 		DispatchQueue.main.async {
-			self.chatTabUIViewController = UIHostingController(rootView: ChatTabUIView(router: self))
-			self.window.rootViewController = self.chatTabUIViewController
+			self.chatTabViewController = UIHostingController(rootView: ChatTabView(router: self))
+			self.window.rootViewController = self.chatTabViewController
 			self.window.makeKeyAndVisible()
 		}
 	}

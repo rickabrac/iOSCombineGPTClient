@@ -1,6 +1,6 @@
 //
 //  ChatGPTAPI.swift
-//  FluxGPTChat
+//  CombingGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
@@ -14,6 +14,7 @@ protocol ChatAPIProtocol {
 }
 
 class ChatGPTAPI: ChatAPIProtocol {
+	
 	private let model = "gpt-3.5-turbo"
 	private let systemMessage = Message(role: "system", content: "You are my helpful AI assistant.")
 	private let temperature = 0.5
@@ -45,12 +46,10 @@ class ChatGPTAPI: ChatAPIProtocol {
 		return urlRequest
 	}
 	
-	private var headers: [String:String] {
-		[
+	private var headers: [String:String] { [
 			"Content-type" : "application/json",
 			"Authorization" : "Bearer \(self.key)",
-		]
-	}
+	] }
 	
 	private let jsonDecoder: JSONDecoder = {
 		let jsonDecoder = JSONDecoder()

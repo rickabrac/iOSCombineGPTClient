@@ -1,6 +1,6 @@
 //
 //  ChatViewController.swift
-//  FluxGPTChat
+//  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
@@ -144,7 +144,7 @@ class ChatViewController: UIViewController {
 		])
 
 		// The UITextField clear button does not not appear to work in my version of Xcode (13.2.1)
-		// presented from a SwiftUI view. This is my workaround, deprecation warnings and all.
+		// presented from a SwiftUI view. This is my workaround, deprecation warning and all.
 		
 		let clearButton = UIButton(type: .system)
 		clearButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
@@ -321,12 +321,12 @@ extension ChatViewController: UITextFieldDelegate {
 
 //  MARK: UIViewControllerRepresentable wrapper
 
-struct ChatViewControllerUIView : UIViewControllerRepresentable {
+struct ChatSwiftUIViewController : UIViewControllerRepresentable {
 	typealias UIViewControllerType = ChatViewController
 	var router: ChatRouter
 	var chat: ChatStoreType
-	public func makeUIViewController(context: UIViewControllerRepresentableContext<ChatViewControllerUIView>) -> ChatViewController {
+	public func makeUIViewController(context: UIViewControllerRepresentableContext<ChatSwiftUIViewController>) -> ChatViewController {
 		return ChatViewController(router: router)
 	}
-	func updateUIViewController(_ uiViewController: ChatViewController, context: UIViewControllerRepresentableContext<ChatViewControllerUIView>) { }
+	func updateUIViewController(_ uiViewController: ChatViewController, context: UIViewControllerRepresentableContext<ChatSwiftUIViewController>) { }
 }

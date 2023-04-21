@@ -1,6 +1,6 @@
 //
 //  ChatStoreTests.swift
-//  FluxGPTChatTests
+//  CombineGPTChatTests
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
@@ -114,23 +114,23 @@ class ChatStoreTests: XCTestCase {
 		XCTAssertEqual(clearedShowingError, false)
 	}
 	
-	func test_ChatAction_getAPIKey() async throws {
+	func test_ChatAction_getGPTKey() async throws {
 		guard let chatRouterStore = ChatRouter.instance?.store else {
 			XCTFail()
 			return
 		}
 		ChatGPTAPI.ignoreSavedAPIKey = true
-		await chat.store.dispatch(action: .getAPIKey(chatRouterStore))
+		await chat.store.dispatch(action: .getGPTKey(chatRouterStore))
 		guard let chatRouterSignal = await ChatRouter.instance?.store.state.signal else {
 			XCTFail()
 			return
 		}
-		XCTAssertEqual(chatRouterSignal, "getAPIKey")
+		XCTAssertEqual(chatRouterSignal, "getGPTKey")
 		guard let mainRouterSignal = await ChatRouter.instance?.store.state.signal else {
 			XCTFail()
 			return
 		}
-		XCTAssertEqual(mainRouterSignal, "getAPIKey")
+		XCTAssertEqual(mainRouterSignal, "getGPTKey")
 	}
 	
 	func testChatStoreSetTestAPIKey() async throws {

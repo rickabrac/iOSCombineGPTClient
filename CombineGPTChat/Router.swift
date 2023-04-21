@@ -1,10 +1,11 @@
 //
 //  Router.swift
-//  FluxGPTChat
+//  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  State-driven app router/coordinator base class. MainRouter and ChatRouter are instances.
+//  State-driven app router base class. MainRouter and ChatRouter are derived instances.
+//  Routers function in lieu of traditional coordinators in my architecture.
 
 import UIKit
 import Combine
@@ -25,7 +26,7 @@ class Router: ObservableObject {
 	///
 	/// - Parameters:
 	///     - window: UIWindow used to display all views
-	///     - path:  absolute path of most recently active route (e.g. "/chat/settings", "/chat", "/getAPIKey")
+	///     - path:  absolute path of most recently active route (e.g. "/chat/settings", "/chat", "/getGPTKey")
 	///     - parent:  parent Router subclass instance
 	///     - store: Router subclass instance state machine
 	///

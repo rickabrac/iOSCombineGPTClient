@@ -1,10 +1,10 @@
 //
 //  ChatStore.swift
-//  FluxGPTChat
+//  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  Single source of truth/state for the chat module
+//  Source of truth / state-machine for chat functionality
 
 import Foundation
 import SwiftUI
@@ -20,7 +20,7 @@ enum ChatAction {
 	case throwError(String)
 	case presentError
 	case clearError
-	case getAPIKey(RouterStoreType)
+	case getGPTKey(RouterStoreType)
 	case setTestAPIKey(String)
 	case tryTestAPIKey(AsyncStream<String>, String)
 	case setAPIKey(String)
@@ -90,8 +90,8 @@ class ChatStore {
 				newState.isShowingError = false
 				newState.error = ""
 				break
-			case .getAPIKey:
-				// see ChatStore.GetAPIKeyAction
+			case .getGPTKey:
+				// see ChatStore.getGPTKeyAction
 				break
 			case .setTestAPIKey(let testKey):
 				newState.testAPIKey = testKey
@@ -110,7 +110,7 @@ class ChatStore {
 			return newState
 		} middleware: {
 			StreamResponseAction()
-			GetAPIKeyAction()
+			getGPTKeyAction()
 			TryTestAPIKeyAction()
 		}
 	}
@@ -145,17 +145,17 @@ class ChatStore {
 		}
 	}
 	
-	//  MARK: ChatStore.GetAPIKeyAction
+	//  MARK: ChatStore.getGPTKeyAction
 	
-	private class GetAPIKeyAction: Middleware {
+	private class getGPTKeyAction: Middleware {
 		func callAsFunction(action: ChatAction) async -> ChatAction? {
-			guard case let .getAPIKey(router) = action else {
+			guard case let .getGPTKey(router) = action else {
 				return action
 			}
 			if let key = ChatGPTAPI.apiKey {
 				return .setAPIKey(key)
 			} else if await router.state.response == nil {
-				await router.dispatch(action: .signal("getAPIKey"))
+				await router.dispatch(action: .signal("getGPTKey"))
 			}
 			return action
 		}

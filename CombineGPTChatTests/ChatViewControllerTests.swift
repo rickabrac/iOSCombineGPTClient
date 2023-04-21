@@ -1,6 +1,6 @@
 //
 //  ChatViewControllerTests.swift
-//  FluxGPTChatTests
+//  CombineGPTChatTests
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 
@@ -42,10 +42,11 @@ class ChatViewControllerTests: XCTestCase {
 		await vc.setChatStore(chat)
 		await vc.loadView()
 		await vc.configure()
-		await  chat.store.dispatch(action: .setPrompt(input))
+		await chat.store.dispatch(action: .setPrompt(input))
+		await chat.store.dispatch(action: .setPrompt(input))
 		let stream = try await api.fetchResponseStream(prompt: input, store: chat.store)
-		await  chat.store.dispatch(action: .setStream(stream))
-		await  chat.store.dispatch(action: .streamResponse(stream, ""))
+		await chat.store.dispatch(action: .setStream(stream))
+		await chat.store.dispatch(action: .streamResponse(stream, ""))
 		while await chat.store.state.stream != nil { }
 	}
 	

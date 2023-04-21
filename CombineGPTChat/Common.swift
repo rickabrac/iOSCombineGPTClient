@@ -1,10 +1,10 @@
 //
 //  Common.swift
-//  FluxGPTChat
+//  CombineGPTChat
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  Various shared extensions
+//  Global extensions
 
 import Foundation
 import SwiftUI
