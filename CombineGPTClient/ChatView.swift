@@ -55,7 +55,7 @@ struct ChatView: View {
 			}
 			return AnyView(EmptyView())
 		}
-		if store.state.prompt.count > 0, store.state.stream == nil {
+		if !store.state.prompt.isEmpty, store.state.stream == nil {
 			return AnyView(
 				ProgressView()
 				.scaleEffect(1.0, anchor: .center)
@@ -94,7 +94,7 @@ struct ChatView: View {
 	}
 	
 	private func alertView() -> some View {
-		if store.state.error.count > 0,
+		if !store.state.error.isEmpty,
 		   store.state.isShowingError == false,
 		   showingError == false {
 			Task {
@@ -106,7 +106,7 @@ struct ChatView: View {
 	}
 	
 	private var showResponse: Bool {
-		if store.state.response.count == 0 {
+		if store.state.response.isEmpty {
 			return false
 		}
 		return true
@@ -249,7 +249,7 @@ struct ChatView: View {
 				.overlay( RoundedRectangle(cornerSize: CGSize(width: 8, height: 8)).stroke(.primary, lineWidth: 1.0).border(.gray).cornerRadius(8) )
 				.font(.system(size: 15, weight: .regular, design: .default))
 				.focused($isFocused)
-				if self.text.count > 0 {
+				if !self.text.isEmpty {
 					Button {
 						self.text = ""
 						self.isFocused = true

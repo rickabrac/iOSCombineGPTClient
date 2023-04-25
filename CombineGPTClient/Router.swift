@@ -93,7 +93,7 @@ class Router: ObservableObject {
 				self.updated = NSDate().timeIntervalSince1970
 			}
 			// new route?
-			if await store.state.next.count > 0 {
+			if await !store.state.next.isEmpty {
 				let next = await store.state.next
 				if next == path {
 					fatalError("Router.route: route to self \(next)")
@@ -102,7 +102,7 @@ class Router: ObservableObject {
 				guard let module = nextParts.last else {
 					fatalError("Router.route: missing module \(next)")
 				}
-				if module.count > 0 {
+				if !module.isEmpty {
 					guard let newRouter = routers[module] else {
 						guard let child = viewControllers[module] else {
 							fatalError("Router.route: missing route \(next)")

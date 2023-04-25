@@ -91,7 +91,7 @@ class ChatAPI: ChatAPIProtocol {
 				do {
 					var jsonError = ""
 					for try await line in lines {
-						if jsonError.count == 0,
+						if jsonError.isEmpty,
 						   line.hasPrefix("data: "),
 						   let data = line.dropFirst(6).data(using: .utf8),
 						   let response = try? jsonDecoder.decode(StreamCompletionResponse.self, from: data) {
@@ -102,7 +102,7 @@ class ChatAPI: ChatAPIProtocol {
 							jsonError += line
 						}
 					}
-					if jsonError.count > 0 {
+					if !jsonError.isEmpty {
 						do {
 							if let json = jsonError.data(using: String.Encoding.utf8){
 								if let errorDict = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject],

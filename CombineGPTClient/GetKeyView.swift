@@ -29,7 +29,7 @@ struct GetKeyView: View {
 				return
 			} else {
 				let error = store.state.error
-				if error.count > 0 {
+				if !error.isEmpty {
 					self.error = error
 					if isFocused == false {
 						isFocused = true
@@ -37,7 +37,7 @@ struct GetKeyView: View {
 					}
 				}
 				let testKey = store.state.testAPIKey
-				if testKey.count > 0 {
+				if !testKey.isEmpty {
 					if let stream = store.state.stream {
 						await store.dispatch(action: .tryTestAPIKey(stream, testKey))
 					} else {

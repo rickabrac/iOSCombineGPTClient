@@ -207,7 +207,7 @@ class ChatViewController: UIViewController {
 			fatalError("ChatViewController.refreshView: failed to unwrap store")
 		}
 		spinner.color = traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
-		if store.state.error.count > 0 {
+		if !store.state.error.isEmpty {
 			presentErrorAlert()
 		}
 		let attributedString = NSMutableAttributedString(string: store.state.response)
@@ -232,12 +232,12 @@ class ChatViewController: UIViewController {
 			response.setContentOffset(CGPoint(x: 0, y: scrollOffset), animated: true)
 		}
 		guard let stream = store.state.stream else {
-			if store.state.response.count > 0 {
+			if !store.state.response.isEmpty {
 				shareButton.isHidden = false
 			}
 			return
 		}
-		if prompt.text?.count == 0, store.state.prompt.count > 0 {
+		if prompt.text?.isEmpty != nil, !store.state.prompt.isEmpty {
 			prompt.text = store.state.prompt
 		}
 		shareButton.isHidden = true
@@ -245,7 +245,7 @@ class ChatViewController: UIViewController {
 		Task {
 			await store.dispatch(action: .streamResponse(stream, store.state.response))
 		}
-		if store.state.error.count > 0,
+		if !store.state.error.isEmpty,
 		   store.state.isShowingError == false {
 			Task {
 				await store.dispatch(action: .presentError)
@@ -278,7 +278,7 @@ class ChatViewController: UIViewController {
 extension ChatViewController: UITextFieldDelegate {
 
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-		if string == "", textField.text?.count == 1 {
+		if string == "", textField.text?.isEmpty != nil {
 			prompt.rightViewMode = .never
 		} else {
 			prompt.rightViewMode = .always

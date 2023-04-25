@@ -36,7 +36,7 @@ class MockChatAPI: ChatAPIProtocol {
 						   jsonError += line
 						}
 					}
-					if jsonError.count > 0 {
+					if !jsonError.isEmpty{
 						do {
 							if let json = jsonError.data(using: String.Encoding.utf8){
 								if let errorDict = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject],
