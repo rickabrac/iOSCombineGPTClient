@@ -8,7 +8,7 @@
 
 • The chat interface is implemented in declarative UIKit and SwiftUI to demonstrate both techniques.
 
-• The project introduces an extensible, reactive routing/coordination framework, also implemented in Combine.
+• The project introduces an extensible, reactive routing/coordination framework, implemented in Combine.
 
 • Flow control is described here: http://tyler.org/iOSCombineGPTClient/FlowControl.png
 
