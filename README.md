@@ -6,7 +6,7 @@
 
 • Store.swift (state machine implementation) is adapted from https://obscuredpixels.com/managing-view-state-with-combine.
 
-• The chat interface is implemented in declarative UIKit and SwiftUI to demonstrate integration of both techniques.
+• The chat interface is implemented in declarative UIKit and SwiftUI to demonstrate both techniques.
 
 • The project does not use storyboards because they combine view and navigation specification, which is unwieldy in large apps.
 
