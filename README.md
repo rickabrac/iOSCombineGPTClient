@@ -4,7 +4,7 @@
 
 ## Notes
 
-• Store.swift (state machine implementation) is adapted from: https://obscuredpixels.com/managing-view-state-with-combine
+• Store.swift (state machine) adapted from: https://obscuredpixels.com/managing-view-state-with-combine
 
 • The chat interface is implemented in declarative UIKit and SwiftUI to demonstrate both techniques.
 
