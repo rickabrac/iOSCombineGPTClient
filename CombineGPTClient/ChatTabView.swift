@@ -19,7 +19,7 @@ struct ChatTabView: View {
 		tabBarAppearance.unselectedItemTintColor = .gray
 	}
 	
-    var body: some View {
+	var body: some View {
 		TabView {
 			ChatView(router: router)
 				.onTapGesture {

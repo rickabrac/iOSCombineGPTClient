@@ -17,7 +17,7 @@ class Router: ObservableObject {
 	var store: RouterStoreType
 	var routers: [String : Router] = [:]
 	var viewControllers: [String : UIViewController] = [:]
-	private var handlers: [String : RouterSignalHandlers] = [:]
+	private var handlers: [String : SignalHandlers] = [:]
 	private var path: String
 	private var updated: TimeInterval = 0
 	private var pool = Set<AnyCancellable>()
@@ -45,7 +45,7 @@ class Router: ObservableObject {
 	///
 	typealias SignalHandler = ((String, String?) async -> Void)
 	
-	private class RouterSignalHandlers {
+	private class SignalHandlers {
 		let upstream: SignalHandler?
 		let downstream: SignalHandler?
 		init(upstream: SignalHandler?, downstream: SignalHandler?) {
@@ -64,7 +64,7 @@ class Router: ObservableObject {
 	func addSignalHandler( _ signal: String,
 	   upstream: SignalHandler?,
 	   downstream: SignalHandler?) {
-		handlers[signal] = RouterSignalHandlers(upstream: upstream, downstream: downstream)
+		handlers[signal] = SignalHandlers(upstream: upstream, downstream: downstream)
 	}
 	
 	/// <#Start or restart the router#>
@@ -73,10 +73,10 @@ class Router: ObservableObject {
 		fatalError("Router.start: unimplemented by subclass")
 	}
 	
-	/// <#Set viewController of view window#>
+	/// Set rootViewController of window
 	///
 	/// - Parameters:
-	///     - vc: view controller to be assign to active 
+	///     - vc: view controller to become active
 	///
 	private func setWindowViewController(_ vc: UIViewController) {
 		window.rootViewController = vc
