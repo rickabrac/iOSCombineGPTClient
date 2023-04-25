@@ -12,7 +12,7 @@
 
 • Flow control is described here: http://tyler.org/iOSCombineGPTClient/FlowControl.png
 
-• SwiftUI Views and UIViewControllers are tested using swift-snapshot-testing from SPM.
+• SwiftUI Views and UIViewControllers are unit-tested via SPM swift-snapshot-testing, in lieu of XCUITest.
   
 ## To-Do
 
