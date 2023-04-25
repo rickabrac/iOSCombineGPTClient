@@ -84,9 +84,6 @@ class Router: ObservableObject {
 	
 	/// <#Respond to a new route or RouterSignal#>
 	///
-	/// - Parameters:
-	///     - vc: view controller to be assign to active
-	///
 	private func route() {
 		Task {
 			defer {
