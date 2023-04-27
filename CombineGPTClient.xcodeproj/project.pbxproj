@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D73105F29EA19A600884CAD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105C29EA19A600884CAD /* Store.swift */; };
 		1D73106029EA19A600884CAD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105D29EA19A600884CAD /* Router.swift */; };
-		1D73106129EA19A600884CAD /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105E29EA19A600884CAD /* Common.swift */; };
+		1D73106129EA19A600884CAD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105E29EA19A600884CAD /* Extensions.swift */; };
 		1DB40A2D29EDCDDC0065D919 /* GetKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */; };
 		1DB40A2F29F1BE370065D919 /* RouterStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A2E29F1BE370065D919 /* RouterStoreTests.swift */; };
 		1DB40A3129F1C43E0065D919 /* RouterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A3029F1C43E0065D919 /* RouterStore.swift */; };
@@ -46,7 +46,7 @@
 /* Begin PBXFileReference section */
 		1D73105C29EA19A600884CAD /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1D73105D29EA19A600884CAD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		1D73105E29EA19A600884CAD /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		1D73105E29EA19A600884CAD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKeyView.swift; sourceTree = "<group>"; };
 		1DB40A2E29F1BE370065D919 /* RouterStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStoreTests.swift; sourceTree = "<group>"; };
 		1DB40A3029F1C43E0065D919 /* RouterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStore.swift; sourceTree = "<group>"; };
@@ -92,6 +92,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D8C440B29FAE06900A3DF3A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1D73105E29EA19A600884CAD /* Extensions.swift */,
+				1D73105C29EA19A600884CAD /* Store.swift */,
+				1D8C440F29FAE49500A3DF3A /* Views */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1D8C440C29FAE07300A3DF3A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1DB40A3029F1C43E0065D919 /* RouterStore.swift */,
+				1D73105D29EA19A600884CAD /* Router.swift */,
+				1DB9920D29E78D5F005E5C75 /* AppRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1D8C440D29FAE08100A3DF3A /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				1DB9920F29E78D7A005E5C75 /* ChatRouter.swift */,
+				1DB9918B29E36746005E5C75 /* ChatStore.swift */,
+				1DB9919629E36746005E5C75 /* ChatTabView.swift */,
+				1DB9918D29E36746005E5C75 /* ChatView.swift */,
+				1DB9919429E36746005E5C75 /* ChatViewController.swift */,
+				1DB9918A29E36746005E5C75 /* ChatAPI.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		1D8C440E29FAE1F000A3DF3A /* Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				1DB991A629E3692D005E5C75 /* AppDelegate.swift */,
+				1DB991ED29E4B5DC005E5C75 /* LaunchScreen.storyboard */,
+				1DB9916629E36675005E5C75 /* Info.plist */,
+				1DB9920429E4B865005E5C75 /* Assets.xcassets */,
+			);
+			path = Lifecycle;
+			sourceTree = "<group>";
+		};
+		1D8C440F29FAE49500A3DF3A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1DB9920929E4D57F005E5C75 /* SplashView.swift */,
+				1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		1DB9914C29E36672005E5C75 = {
 			isa = PBXGroup;
 			children = (
@@ -114,24 +167,10 @@
 		1DB9915729E36672005E5C75 /* CombineGPTClient */ = {
 			isa = PBXGroup;
 			children = (
-				1D73105C29EA19A600884CAD /* Store.swift */,
-				1DB40A3029F1C43E0065D919 /* RouterStore.swift */,
-				1D73105D29EA19A600884CAD /* Router.swift */,
-				1DB9920D29E78D5F005E5C75 /* AppRouter.swift */,
-				1DB9920F29E78D7A005E5C75 /* ChatRouter.swift */,
-				1DB9918B29E36746005E5C75 /* ChatStore.swift */,
-				1DB9919629E36746005E5C75 /* ChatTabView.swift */,
-				1DB9918D29E36746005E5C75 /* ChatView.swift */,
-				1DB9919429E36746005E5C75 /* ChatViewController.swift */,
-				1DB9918A29E36746005E5C75 /* ChatAPI.swift */,
-				1DB9920929E4D57F005E5C75 /* SplashView.swift */,
-				1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */,
-				1D73105E29EA19A600884CAD /* Common.swift */,
-				1DB991A629E3692D005E5C75 /* AppDelegate.swift */,
-				1DB991ED29E4B5DC005E5C75 /* LaunchScreen.storyboard */,
-				1DB9916629E36675005E5C75 /* Info.plist */,
-				1DB9920429E4B865005E5C75 /* Assets.xcassets */,
-				1DB9920029E4B797005E5C75 /* TestResponse.json */,
+				1D8C440B29FAE06900A3DF3A /* Common */,
+				1D8C440C29FAE07300A3DF3A /* Router */,
+				1D8C440D29FAE08100A3DF3A /* Chat */,
+				1D8C440E29FAE1F000A3DF3A /* Lifecycle */,
 			);
 			path = CombineGPTClient;
 			sourceTree = "<group>";
@@ -144,6 +183,7 @@
 				1DB991F829E4B728005E5C75 /* ChatViewTests.swift */,
 				1DB991F329E4B728005E5C75 /* ChatViewControllerTests.swift */,
 				1DB991F529E4B728005E5C75 /* MockChatAPI.swift */,
+				1DB9920029E4B797005E5C75 /* TestResponse.json */,
 				1DB991F629E4B728005E5C75 /* __Snapshots__ */,
 			);
 			path = CombineGPTClientTests;
@@ -268,7 +308,7 @@
 				1DB991A529E36746005E5C75 /* ChatTabView.swift in Sources */,
 				1D73105F29EA19A600884CAD /* Store.swift in Sources */,
 				1DB40A3129F1C43E0065D919 /* RouterStore.swift in Sources */,
-				1D73106129EA19A600884CAD /* Common.swift in Sources */,
+				1D73106129EA19A600884CAD /* Extensions.swift in Sources */,
 				1DB9921029E78D7A005E5C75 /* ChatRouter.swift in Sources */,
 				1DB991A329E36746005E5C75 /* ChatViewController.swift in Sources */,
 				1DB40A2D29EDCDDC0065D919 /* GetKeyView.swift in Sources */,
