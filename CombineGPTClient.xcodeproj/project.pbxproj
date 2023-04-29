@@ -10,6 +10,7 @@
 		1D73105F29EA19A600884CAD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105C29EA19A600884CAD /* Store.swift */; };
 		1D73106029EA19A600884CAD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105D29EA19A600884CAD /* Router.swift */; };
 		1D73106129EA19A600884CAD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105E29EA19A600884CAD /* Extensions.swift */; };
+		1D8C441129FD9A2D00A3DF3A /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8C441029FD9A2D00A3DF3A /* TabView.swift */; };
 		1DB40A2D29EDCDDC0065D919 /* GetKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */; };
 		1DB40A2F29F1BE370065D919 /* RouterStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A2E29F1BE370065D919 /* RouterStoreTests.swift */; };
 		1DB40A3129F1C43E0065D919 /* RouterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A3029F1C43E0065D919 /* RouterStore.swift */; };
@@ -17,7 +18,6 @@
 		1DB9919A29E36746005E5C75 /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918B29E36746005E5C75 /* ChatStore.swift */; };
 		1DB9919C29E36746005E5C75 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9918D29E36746005E5C75 /* ChatView.swift */; };
 		1DB991A329E36746005E5C75 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9919429E36746005E5C75 /* ChatViewController.swift */; };
-		1DB991A529E36746005E5C75 /* ChatTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB9919629E36746005E5C75 /* ChatTabView.swift */; };
 		1DB991A829E3692D005E5C75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB991A629E3692D005E5C75 /* AppDelegate.swift */; };
 		1DB991EF29E4B5DC005E5C75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DB991ED29E4B5DC005E5C75 /* LaunchScreen.storyboard */; };
 		1DB991FA29E4B728005E5C75 /* ChatViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB991F329E4B728005E5C75 /* ChatViewControllerTests.swift */; };
@@ -47,6 +47,7 @@
 		1D73105C29EA19A600884CAD /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1D73105D29EA19A600884CAD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1D73105E29EA19A600884CAD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1D8C441029FD9A2D00A3DF3A /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKeyView.swift; sourceTree = "<group>"; };
 		1DB40A2E29F1BE370065D919 /* RouterStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStoreTests.swift; sourceTree = "<group>"; };
 		1DB40A3029F1C43E0065D919 /* RouterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStore.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		1DB9918B29E36746005E5C75 /* ChatStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
 		1DB9918D29E36746005E5C75 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		1DB9919429E36746005E5C75 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		1DB9919629E36746005E5C75 /* ChatTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTabView.swift; sourceTree = "<group>"; };
 		1DB991A629E3692D005E5C75 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DB991B029E4AEC8005E5C75 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1DB991EE29E4B5DC005E5C75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -117,7 +117,6 @@
 			children = (
 				1DB9920F29E78D7A005E5C75 /* ChatRouter.swift */,
 				1DB9918B29E36746005E5C75 /* ChatStore.swift */,
-				1DB9919629E36746005E5C75 /* ChatTabView.swift */,
 				1DB9918D29E36746005E5C75 /* ChatView.swift */,
 				1DB9919429E36746005E5C75 /* ChatViewController.swift */,
 				1DB9918A29E36746005E5C75 /* ChatAPI.swift */,
@@ -141,6 +140,7 @@
 			children = (
 				1DB9920929E4D57F005E5C75 /* SplashView.swift */,
 				1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */,
+				1D8C441029FD9A2D00A3DF3A /* TabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,9 +303,9 @@
 				1DB9919A29E36746005E5C75 /* ChatStore.swift in Sources */,
 				1DB9920E29E78D5F005E5C75 /* AppRouter.swift in Sources */,
 				1DB9920A29E4D57F005E5C75 /* SplashView.swift in Sources */,
+				1D8C441129FD9A2D00A3DF3A /* TabView.swift in Sources */,
 				1D73106029EA19A600884CAD /* Router.swift in Sources */,
 				1DB991A829E3692D005E5C75 /* AppDelegate.swift in Sources */,
-				1DB991A529E36746005E5C75 /* ChatTabView.swift in Sources */,
 				1D73105F29EA19A600884CAD /* Store.swift in Sources */,
 				1DB40A3129F1C43E0065D919 /* RouterStore.swift in Sources */,
 				1D73106129EA19A600884CAD /* Extensions.swift in Sources */,

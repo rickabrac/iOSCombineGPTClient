@@ -36,7 +36,17 @@ class ChatRouter: Router {
 	
 	override func start() {
 		DispatchQueue.main.async {
-			self.chatTabViewController = UIHostingController(rootView: ChatTabView(router: self))
+			let swiftUIChatView = TabView.Item(
+				text: "SwiftUI",
+				image: "swiftui",
+				view: AnyView(ChatView(router: self))
+			)
+			let uiKitChatView = TabView.Item(
+				text: "UIKit",
+				image: "uikit",
+				view: AnyView(ChatSwiftUIViewController(router: self, chat: ChatStore.store))
+			)
+			self.chatTabViewController = UIHostingController(rootView: TabView(router: self, tabItems: [swiftUIChatView, uiKitChatView]))
 			self.window.rootViewController = self.chatTabViewController
 			self.window.makeKeyAndVisible()
 		}
