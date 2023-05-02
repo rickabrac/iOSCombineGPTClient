@@ -306,12 +306,6 @@ extension ChatViewController: UITextFieldDelegate {
 		guard let prompt = textField.text else { return false }
 		spinner.isHidden = false
 		response.text = ""
-//		DispatchQueue.main.async {
-//			let api = ImageAPI(key: "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")
-//			api.fetchImage(prompt: prompt, store: chat.store) { (imageURL, error) in
-//				print("\(imageURL)")
-//			}
-//		}
 		Task {
 			if chat.store.state.api == nil {
 				guard let key = ChatAPI.apiKey else {
