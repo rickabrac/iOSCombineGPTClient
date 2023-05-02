@@ -4,7 +4,7 @@
 //  Copyright 2023 Rick Tyler
 //  SPDX-License-Identifier: MIT
 //
-//  Reusable TabView configurable via TabView.Item array passed to initializer.
+//  Reusable TabView configurable by passing TabView.Item array to initializer.
 
 import SwiftUI
 

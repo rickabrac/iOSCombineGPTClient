@@ -25,6 +25,7 @@ enum ChatAction {
 	case tryTestAPIKey(AsyncStream<String>, String)
 	case setAPIKey(String)
 	case setAPI(ChatAPIProtocol)
+	case setImageURL(String)
 }
 
 struct ChatState: State {
@@ -38,6 +39,7 @@ struct ChatState: State {
 	var apiKey: String? = nil
 	var testAPIKey: String = ""
 	var api: ChatAPIProtocol? = nil
+	var imageURL: String = ""
 }
 
 typealias ChatStoreType = Store<ChatState, ChatAction>
@@ -106,6 +108,8 @@ class ChatStore {
 				break
 			case .setAPI(let api):
 				newState.api = api
+			case .setImageURL(let imageURL):
+				newState.imageURL = imageURL
 			}
 			return newState
 		} middleware: {

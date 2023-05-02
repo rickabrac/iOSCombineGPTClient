@@ -52,7 +52,6 @@
 		1DB40A2E29F1BE370065D919 /* RouterStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStoreTests.swift; sourceTree = "<group>"; };
 		1DB40A3029F1C43E0065D919 /* RouterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStore.swift; sourceTree = "<group>"; };
 		1DB9915529E36672005E5C75 /* CombineGPTClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineGPTClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DB9916629E36675005E5C75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DB9916B29E36676005E5C75 /* CombineGPTClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CombineGPTClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DB9918A29E36746005E5C75 /* ChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		1DB9918B29E36746005E5C75 /* ChatStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
@@ -129,7 +128,6 @@
 			children = (
 				1DB991A629E3692D005E5C75 /* AppDelegate.swift */,
 				1DB991ED29E4B5DC005E5C75 /* LaunchScreen.storyboard */,
-				1DB9916629E36675005E5C75 /* Info.plist */,
 				1DB9920429E4B865005E5C75 /* Assets.xcassets */,
 			);
 			path = Lifecycle;

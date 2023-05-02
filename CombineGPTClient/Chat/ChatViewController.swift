@@ -10,7 +10,7 @@ import UIKit
 import Combine
 import SwiftUI
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UIGestureRecognizerDelegate {
 	typealias StoreState = ChatState
 	typealias StoreAction = ChatAction
 	
@@ -58,6 +58,10 @@ class ChatViewController: UIViewController {
 	@objc func clearTextField() {
 		prompt.text = ""
 		prompt.rightViewMode = .never
+	}
+	
+	@objc func wtf() {
+		print("wtf()")
 	}
 	
 	func configure() {
@@ -134,6 +138,7 @@ class ChatViewController: UIViewController {
 		leftView.backgroundColor = prompt.backgroundColor;
 		prompt.leftView = leftView
 		prompt.leftViewMode = .always
+		prompt.clearButtonMode = .always
 		view.addSubview(prompt)
 		prompt.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -142,27 +147,33 @@ class ChatViewController: UIViewController {
 			prompt.topAnchor.constraint(equalTo: myTitle.bottomAnchor, constant: 3.5),
 			prompt.heightAnchor.constraint(equalToConstant: 43)
 		])
+		
+		// required to make
+		let enableClearButton = UITapGestureRecognizer(target: self, action: nil)
+		enableClearButton.delegate =  self;
+		enableClearButton.cancelsTouchesInView = false;
+		prompt.addGestureRecognizer(enableClearButton)
 
 		// The UITextField clear button does not not appear to work in my version of Xcode (13.2.1)
 		// presented from a SwiftUI view. This is my workaround, deprecation warning and all.
 		
-		let clearButton = UIButton(type: .system)
-		clearButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
-		clearButton.setTitle("", for: .normal)
-		clearButton.setImage(UIImage(systemName: "multiply.circle.fill")!, for: .normal)
-		clearButton.isUserInteractionEnabled = true
-		prompt.addSubview(clearButton)
-		clearButton.tintColor = .gray // .lightGray
-		clearButton.addTarget(self, action: #selector(clearTextField), for: .touchDown)
-		prompt.rightView = clearButton
-		prompt.rightViewMode = .never
-		clearButton.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activate([
-			clearButton.topAnchor.constraint(equalTo: prompt.topAnchor, constant: 8),
-			clearButton.trailingAnchor.constraint(equalTo: prompt.trailingAnchor, constant: -30),
-			clearButton.widthAnchor.constraint(equalToConstant: 23),
-			clearButton.heightAnchor.constraint(equalToConstant: 17.5)
-		])
+//		let clearButton = UIButton(type: .system)
+//		clearButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
+//		clearButton.setTitle("", for: .normal)
+//		clearButton.setImage(UIImage(systemName: "multiply.circle.fill")!, for: .normal)
+//		clearButton.isUserInteractionEnabled = true
+//		prompt.addSubview(clearButton)
+//		clearButton.tintColor = .gray // .lightGray
+//		clearButton.addTarget(self, action: #selector(clearTextField), for: .touchDown)
+//		prompt.rightView = clearButton
+//		prompt.rightViewMode = .never
+//		clearButton.translatesAutoresizingMaskIntoConstraints = false
+//		NSLayoutConstraint.activate([
+//			clearButton.topAnchor.constraint(equalTo: prompt.topAnchor, constant: 8),
+//			clearButton.trailingAnchor.constraint(equalTo: prompt.trailingAnchor, constant: -30),
+//			clearButton.widthAnchor.constraint(equalToConstant: 23),
+//			clearButton.heightAnchor.constraint(equalToConstant: 17.5)
+//		])
 		
 		// response
 		response.isEditable = false
@@ -295,6 +306,12 @@ extension ChatViewController: UITextFieldDelegate {
 		guard let prompt = textField.text else { return false }
 		spinner.isHidden = false
 		response.text = ""
+//		DispatchQueue.main.async {
+//			let api = ImageAPI(key: "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")
+//			api.fetchImage(prompt: prompt, store: chat.store) { (imageURL, error) in
+//				print("\(imageURL)")
+//			}
+//		}
 		Task {
 			if chat.store.state.api == nil {
 				guard let key = ChatAPI.apiKey else {

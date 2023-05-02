@@ -31,7 +31,7 @@ struct SplashView: View {
 			ZStack(alignment: .center) {
 				Image("brain")
 					.edgesIgnoringSafeArea(.all)
-				Text("GPT Chat Client\nby\nRick Tyler")
+				Text("OpenAI GPT Client\nby\nRick Tyler")
 					.multilineTextAlignment(.center)
 			}
 		}
