@@ -20,6 +20,7 @@ class AppRouter: Router {
 		assert(path == "/", "AppRouter.init: path should be \"/\"")
 		routers["chat"] = ChatRouter(window, path: "/chat", parent: self)
 		viewControllers["getGPTKey"] = UIHostingController(rootView: GetKeyView(router: self, store: ChatStore.store))
+		viewControllers["image"] = ImageViewController(router: routers["chat"] as! ChatRouter)
 		addSignalHandler("getGPTKey",
 			upstream: { (_,_) in
 				if let key = ChatAPI.apiKey {
@@ -38,6 +39,17 @@ class AppRouter: Router {
 	
 	override func start() {
 		DispatchQueue.main.async {
+			if let defaults = UserDefaults(suiteName: "group.gptclient"),
+			   let imageData = defaults.object(forKey: "imageData") as? Data {
+				guard let _ = UIImage(data: imageData) else {
+					fatalError("AppRouter.start: failed to load imageData")
+				}
+				Task {
+					await self.store.dispatch(action: .setNext("/image"))
+				}
+				return
+			}
+			
 			let splashView = SplashView(router: self)
 			
 			self.splashViewController = UIHostingController(rootView: splashView)

@@ -46,13 +46,13 @@ class ChatRouter: Router {
 				image: "uikit",
 				view: AnyView(ChatSwiftUIViewController(router: self, chat: ChatStore.store))
 			)
-//			let uiKitImageView = TabView.Item(
-//				text: "DALL-E",
-//				image: "uikit",
-//				view: AnyView(ImageSwiftUIViewController(router: self, chat: ChatStore.store))
-//			)
-//			self.chatTabViewController = UIHostingController(rootView: TabView(router: self, tabItems: [swiftUIChatView, uiKitChatView, uiKitImageView]))
-			self.chatTabViewController = UIHostingController(rootView: TabView(router: self, tabItems: [swiftUIChatView, uiKitChatView]))
+			let uiKitImageView = TabView.Item(
+				text: "DALL-E",
+				image: "uikit",
+				view: AnyView(ImageSwiftUIViewController(router: self, chat: ChatStore.store))
+			)
+			self.chatTabViewController = UIHostingController(rootView: TabView(router: self, tabItems: [swiftUIChatView, uiKitChatView, uiKitImageView]))
+//			self.chatTabViewController = UIHostingController(rootView: TabView(router: self, tabItems: [swiftUIChatView, uiKitChatView]))
 
 			self.window.rootViewController = self.chatTabViewController
 			self.window.makeKeyAndVisible()

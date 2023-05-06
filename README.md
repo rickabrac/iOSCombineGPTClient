@@ -17,3 +17,5 @@
 ## To-Do
 
 • SwiftUI autoscrolling not working (in Xcode 13.2.1 / iOS 15.2)
+
+• Support image editing view DALL-E API.

@@ -11,6 +11,10 @@
 		1D73106029EA19A600884CAD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105D29EA19A600884CAD /* Router.swift */; };
 		1D73106129EA19A600884CAD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73105E29EA19A600884CAD /* Extensions.swift */; };
 		1D8C441129FD9A2D00A3DF3A /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8C441029FD9A2D00A3DF3A /* TabView.swift */; };
+		1D9C3C722A01AAE900D311D9 /* CombineGPTClientShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1D9C3C682A01AAE900D311D9 /* CombineGPTClientShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1D9C3C7A2A01AC7100D311D9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9C3C782A01AC7100D311D9 /* ShareViewController.swift */; };
+		1D9C3C812A01C64900D311D9 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9C3C7F2A01C64900D311D9 /* ImageViewController.swift */; };
+		1D9C3C822A01C64900D311D9 /* ImageGenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9C3C802A01C64900D311D9 /* ImageGenAPI.swift */; };
 		1DB40A2D29EDCDDC0065D919 /* GetKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */; };
 		1DB40A2F29F1BE370065D919 /* RouterStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A2E29F1BE370065D919 /* RouterStoreTests.swift */; };
 		1DB40A3129F1C43E0065D919 /* RouterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB40A3029F1C43E0065D919 /* RouterStore.swift */; };
@@ -34,6 +38,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1D9C3C702A01AAE900D311D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1DB9914D29E36672005E5C75 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D9C3C672A01AAE900D311D9;
+			remoteInfo = CombineGPTClientShare;
+		};
 		1DB9916C29E36676005E5C75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1DB9914D29E36672005E5C75 /* Project object */;
@@ -43,11 +54,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1D9C3C762A01AAE900D311D9 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1D9C3C722A01AAE900D311D9 /* CombineGPTClientShare.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1D73105C29EA19A600884CAD /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1D73105D29EA19A600884CAD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1D73105E29EA19A600884CAD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1D8C441029FD9A2D00A3DF3A /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		1D9C3C682A01AAE900D311D9 /* CombineGPTClientShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CombineGPTClientShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D9C3C782A01AC7100D311D9 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		1D9C3C7C2A01B01200D311D9 /* CombineGPTClientShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CombineGPTClientShare.entitlements; sourceTree = "<group>"; };
+		1D9C3C7D2A01B09700D311D9 /* CombineGPTClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CombineGPTClient.entitlements; sourceTree = "<group>"; };
+		1D9C3C7F2A01C64900D311D9 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		1D9C3C802A01C64900D311D9 /* ImageGenAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGenAPI.swift; sourceTree = "<group>"; };
 		1DB40A2C29EDCDDC0065D919 /* GetKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKeyView.swift; sourceTree = "<group>"; };
 		1DB40A2E29F1BE370065D919 /* RouterStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStoreTests.swift; sourceTree = "<group>"; };
 		1DB40A3029F1C43E0065D919 /* RouterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterStore.swift; sourceTree = "<group>"; };
@@ -73,6 +104,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1D9C3C652A01AAE900D311D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1DB9915229E36672005E5C75 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -143,11 +181,30 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		1D9C3C692A01AAE900D311D9 /* CombineGPTClientShare */ = {
+			isa = PBXGroup;
+			children = (
+				1D9C3C7C2A01B01200D311D9 /* CombineGPTClientShare.entitlements */,
+				1D9C3C782A01AC7100D311D9 /* ShareViewController.swift */,
+			);
+			path = CombineGPTClientShare;
+			sourceTree = "<group>";
+		};
+		1D9C3C7E2A01C35900D311D9 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				1D9C3C802A01C64900D311D9 /* ImageGenAPI.swift */,
+				1D9C3C7F2A01C64900D311D9 /* ImageViewController.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		1DB9914C29E36672005E5C75 = {
 			isa = PBXGroup;
 			children = (
 				1DB991B029E4AEC8005E5C75 /* README.md */,
 				1DB9915729E36672005E5C75 /* CombineGPTClient */,
+				1D9C3C692A01AAE900D311D9 /* CombineGPTClientShare */,
 				1DB9916E29E36676005E5C75 /* CombineGPTClientTests */,
 				1DB9915629E36672005E5C75 /* Products */,
 			);
@@ -158,6 +215,7 @@
 			children = (
 				1DB9915529E36672005E5C75 /* CombineGPTClient.app */,
 				1DB9916B29E36676005E5C75 /* CombineGPTClientTests.xctest */,
+				1D9C3C682A01AAE900D311D9 /* CombineGPTClientShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,9 +223,11 @@
 		1DB9915729E36672005E5C75 /* CombineGPTClient */ = {
 			isa = PBXGroup;
 			children = (
+				1D9C3C7D2A01B09700D311D9 /* CombineGPTClient.entitlements */,
 				1D8C440B29FAE06900A3DF3A /* Common */,
 				1D8C440C29FAE07300A3DF3A /* Router */,
 				1D8C440D29FAE08100A3DF3A /* Chat */,
+				1D9C3C7E2A01C35900D311D9 /* Image */,
 				1D8C440E29FAE1F000A3DF3A /* Lifecycle */,
 			);
 			path = CombineGPTClient;
@@ -190,6 +250,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1D9C3C672A01AAE900D311D9 /* CombineGPTClientShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D9C3C732A01AAE900D311D9 /* Build configuration list for PBXNativeTarget "CombineGPTClientShare" */;
+			buildPhases = (
+				1D9C3C642A01AAE900D311D9 /* Sources */,
+				1D9C3C652A01AAE900D311D9 /* Frameworks */,
+				1D9C3C662A01AAE900D311D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CombineGPTClientShare;
+			productName = CombineGPTClientShare;
+			productReference = 1D9C3C682A01AAE900D311D9 /* CombineGPTClientShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		1DB9915429E36672005E5C75 /* CombineGPTClient */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DB9917F29E36676005E5C75 /* Build configuration list for PBXNativeTarget "CombineGPTClient" */;
@@ -197,10 +274,12 @@
 				1DB9915129E36672005E5C75 /* Sources */,
 				1DB9915229E36672005E5C75 /* Frameworks */,
 				1DB9915329E36672005E5C75 /* Resources */,
+				1D9C3C762A01AAE900D311D9 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1D9C3C712A01AAE900D311D9 /* PBXTargetDependency */,
 			);
 			name = CombineGPTClient;
 			packageProductDependencies = (
@@ -240,6 +319,10 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					1D9C3C672A01AAE900D311D9 = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+					};
 					1DB9915429E36672005E5C75 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -267,11 +350,19 @@
 			targets = (
 				1DB9915429E36672005E5C75 /* CombineGPTClient */,
 				1DB9916A29E36676005E5C75 /* CombineGPTClientTests */,
+				1D9C3C672A01AAE900D311D9 /* CombineGPTClientShare */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1D9C3C662A01AAE900D311D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1DB9915329E36672005E5C75 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,6 +384,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1D9C3C642A01AAE900D311D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D9C3C7A2A01AC7100D311D9 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1DB9915129E36672005E5C75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -303,7 +402,9 @@
 				1DB9920A29E4D57F005E5C75 /* SplashView.swift in Sources */,
 				1D8C441129FD9A2D00A3DF3A /* TabView.swift in Sources */,
 				1D73106029EA19A600884CAD /* Router.swift in Sources */,
+				1D9C3C822A01C64900D311D9 /* ImageGenAPI.swift in Sources */,
 				1DB991A829E3692D005E5C75 /* AppDelegate.swift in Sources */,
+				1D9C3C812A01C64900D311D9 /* ImageViewController.swift in Sources */,
 				1D73105F29EA19A600884CAD /* Store.swift in Sources */,
 				1DB40A3129F1C43E0065D919 /* RouterStore.swift in Sources */,
 				1D73106129EA19A600884CAD /* Extensions.swift in Sources */,
@@ -329,6 +430,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1D9C3C712A01AAE900D311D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D9C3C672A01AAE900D311D9 /* CombineGPTClientShare */;
+			targetProxy = 1D9C3C702A01AAE900D311D9 /* PBXContainerItemProxy */;
+		};
 		1DB9916D29E36676005E5C75 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1DB9915429E36672005E5C75 /* CombineGPTClient */;
@@ -348,6 +454,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1D9C3C742A01AAE900D311D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CombineGPTClientShare/CombineGPTClientShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8YF8T56D68;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CombineGPTClientShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CombineGPTClientShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tyler.org.CombineGPTClient.CombineGPTClientShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D9C3C752A01AAE900D311D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CombineGPTClientShare/CombineGPTClientShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8YF8T56D68;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CombineGPTClientShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CombineGPTClientShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tyler.org.CombineGPTClient.CombineGPTClientShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CombineGPTClientShare/CombineGPTClientShare-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		1DB9917D29E36676005E5C75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -467,8 +629,10 @@
 		1DB9918029E36676005E5C75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CombineGPTClient/CombineGPTClient.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8YF8T56D68;
@@ -495,8 +659,10 @@
 		1DB9918129E36676005E5C75 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CombineGPTClient/CombineGPTClient.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8YF8T56D68;
@@ -563,6 +729,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1D9C3C732A01AAE900D311D9 /* Build configuration list for PBXNativeTarget "CombineGPTClientShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D9C3C742A01AAE900D311D9 /* Debug */,
+				1D9C3C752A01AAE900D311D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1DB9915029E36672005E5C75 /* Build configuration list for PBXProject "CombineGPTClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

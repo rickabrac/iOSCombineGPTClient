@@ -100,6 +100,7 @@ class Router: ObservableObject {
 					fatalError("Router.route: missing module \(next)")
 				}
 				if !module.isEmpty {
+					print("\(module)")
 					guard let newRouter = routers[module] else {
 						guard let child = viewControllers[module] else {
 							fatalError("Router.route: missing route \(next)")

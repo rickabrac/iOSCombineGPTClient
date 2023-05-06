@@ -205,7 +205,7 @@ struct ChatView: View {
 			.navigationBarTitleDisplayMode(.inline)
 			.toolbar {
 				ToolbarItem(placement: .principal) {
-					Text("SwiftUI GPT Chat")
+					Text("GPT Chat (SwiftUI)")
 						.font(.system(size: 17, weight: .semibold, design: .default))
 						.accessibilityAddTraits(.isHeader)
 				}

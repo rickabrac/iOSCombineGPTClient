@@ -1,16 +1,14 @@
 //
-//  ChatViewController.swift
+//  Controller.swift
 //  CombineGPTClient
-//  Copyright 2023 Rick Tyler
+//  Created by Rick Tyler
 //  SPDX-License-Identifier: MIT
-//
-//  Declarative UIKit implementation of the chat interface
 
 import UIKit
 import Combine
 import SwiftUI
 
-class ChatViewController: UIViewController, UIGestureRecognizerDelegate {
+class ImageViewController: UIViewController, UIGestureRecognizerDelegate {
 	typealias StoreState = ChatState
 	typealias StoreAction = ChatAction
 	
@@ -20,7 +18,7 @@ class ChatViewController: UIViewController, UIGestureRecognizerDelegate {
 	private let myTitle = UILabel()
 	private let prompt = MyTextField()
 	private let clearButton = UIButton(type: .system)
-	private let response = UITextView()
+	private let imageView = UIImageView()
 	private let spinner = UIActivityIndicatorView(style: .medium)
 	private let shareButton = UIButton(type: .system)
 	
@@ -52,16 +50,17 @@ class ChatViewController: UIViewController, UIGestureRecognizerDelegate {
 		view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
 		myTitle.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
 		prompt.tintColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
-		response.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
+		let defaults = UserDefaults(suiteName: "group.gptclient")
+		if let imageData = defaults?.object(forKey: "imageData") as? Data,
+		   let image = UIImage(data: imageData) {
+			self.imageView.image = image
+		}
+		defaults?.removeObject(forKey: "imageData")
 	}
 	
 	@objc func clearTextField() {
 		prompt.text = ""
 		prompt.rightViewMode = .never
-	}
-	
-	@objc func wtf() {
-		print("wtf()")
 	}
 	
 	func configure() {
@@ -73,17 +72,17 @@ class ChatViewController: UIViewController, UIGestureRecognizerDelegate {
 		store = chat?.store
 		
 		guard let store = store else {
-			fatalError("ChatViewController.configure: failed to unwrap store")
+			fatalError("ImageViewController.configure: failed to unwrap store")
 		}
 		
 		Task {
-			await store.bindStateObserver(refreshView, &ChatViewController.pool)
+			await store.bindStateObserver(refreshView, &ImageViewController.pool)
 		}
 		
 		view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
 		
 		// title
-		myTitle.text = "GPT Chat (UIKit)"
+		myTitle.text = "DALL-E Imagemaker (UIKit)"
 		myTitle.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
 		myTitle.textAlignment = .center
 		myTitle.textColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
@@ -123,7 +122,7 @@ class ChatViewController: UIViewController, UIGestureRecognizerDelegate {
 		])
 		
 		// search field
-		prompt.placeholder = "Ask me anything"
+		prompt.placeholder = "Describe an image you want me to generate"
 		prompt.delegate = self
 		prompt.layer.cornerRadius = 5.0
 		prompt.autocapitalizationType = .none
@@ -153,39 +152,17 @@ class ChatViewController: UIViewController, UIGestureRecognizerDelegate {
 		enableClearButton.delegate =  self;
 		enableClearButton.cancelsTouchesInView = false;
 		prompt.addGestureRecognizer(enableClearButton)
-
-		// The UITextField clear button does not not appear to work in my version of Xcode (13.2.1)
-		// presented from a SwiftUI view. This is my workaround, deprecation warning and all.
 		
-//		let clearButton = UIButton(type: .system)
-//		clearButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
-//		clearButton.setTitle("", for: .normal)
-//		clearButton.setImage(UIImage(systemName: "multiply.circle.fill")!, for: .normal)
-//		clearButton.isUserInteractionEnabled = true
-//		prompt.addSubview(clearButton)
-//		clearButton.tintColor = .gray // .lightGray
-//		clearButton.addTarget(self, action: #selector(clearTextField), for: .touchDown)
-//		prompt.rightView = clearButton
-//		prompt.rightViewMode = .never
-//		clearButton.translatesAutoresizingMaskIntoConstraints = false
-//		NSLayoutConstraint.activate([
-//			clearButton.topAnchor.constraint(equalTo: prompt.topAnchor, constant: 8),
-//			clearButton.trailingAnchor.constraint(equalTo: prompt.trailingAnchor, constant: -30),
-//			clearButton.widthAnchor.constraint(equalToConstant: 23),
-//			clearButton.heightAnchor.constraint(equalToConstant: 17.5)
-//		])
-		
-		// response
-		response.isEditable = false
-		view.addSubview(response)
-		response.sizeToFit()
-		response.translatesAutoresizingMaskIntoConstraints = false
-		response.contentInset = UIEdgeInsets(top: 6.5, left: 0, bottom: 0, right: 0)
+		// imageView
+		view.addSubview(imageView)
+		imageView.layer.borderWidth = 1
+		imageView.center = view.center
+		imageView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			response.topAnchor.constraint(equalTo: prompt.bottomAnchor, constant: 0),
-			response.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-			response.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -18),
-			response.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5)
+			imageView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+			imageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: -1),
+			imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 1),
+			imageView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, constant: -50)
 		])
 		
 		// activity indicator
@@ -204,7 +181,7 @@ class ChatViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	func presentErrorAlert(completion: (() -> ())? = nil) {
 		guard let store = store else {
-			fatalError("ChatViewController.presentErrorAlert: failed to unwrap store")
+			fatalError("ImageViewController.presentErrorAlert: failed to unwrap store")
 		}
 		let alert = UIAlertController(title: "Fetch Error", message: "\n\(store.state.error)", preferredStyle: .alert)
 		let dismiss = UIAlertAction(title: "OK", style: .default) { UIAlertAction in }
@@ -215,7 +192,7 @@ class ChatViewController: UIViewController, UIGestureRecognizerDelegate {
 	private func refreshView() {
 		prompt.tintColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
 		guard let store = store else {
-			fatalError("ChatViewController.refreshView: failed to unwrap store")
+			fatalError("ImageViewController.refreshView: failed to unwrap store")
 		}
 		spinner.color = traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
 		if !store.state.error.isEmpty {
@@ -237,31 +214,31 @@ class ChatViewController: UIViewController, UIGestureRecognizerDelegate {
 		)
 		let attributes: [NSAttributedString.Key: Any] = [ .font: UIFont.systemFont(ofSize: 15) ]
 		attributedString.addAttributes(attributes, range: range) // NSMakeRange(0, attributedString.length))
-		response.attributedText = attributedString
-		let scrollOffset = response.contentSize.height - response.frame.size.height
-		if scrollOffset > 0 {
-			response.setContentOffset(CGPoint(x: 0, y: scrollOffset), animated: true)
-		}
-		guard let stream = store.state.stream else {
-			if !store.state.response.isEmpty {
-				shareButton.isHidden = false
-			}
-			return
-		}
-		if prompt.text?.isEmpty != nil, !store.state.prompt.isEmpty {
-			prompt.text = store.state.prompt
-		}
-		shareButton.isHidden = true
-		spinner.isHidden = true
-		Task {
-			await store.dispatch(action: .streamResponse(stream, store.state.response))
-		}
-		if !store.state.error.isEmpty,
-		   store.state.isShowingError == false {
-			Task {
-				await store.dispatch(action: .presentError)
-			}
-		}
+//		response.attributedText = attributedString
+//		let scrollOffset = response.contentSize.height - response.frame.size.height
+//		if scrollOffset > 0 {
+//			response.setContentOffset(CGPoint(x: 0, y: scrollOffset), animated: true)
+//		}
+//		guard let stream = store.state.stream else {
+//			if !store.state.response.isEmpty {
+//				shareButton.isHidden = false
+//			}
+//			return
+//		}
+//		if prompt.text?.isEmpty != nil, !store.state.prompt.isEmpty {
+//			prompt.text = store.state.prompt
+//		}
+//		shareButton.isHidden = true
+//		spinner.isHidden = true
+//		Task {
+//			await store.dispatch(action: .streamResponse(stream, store.state.response))
+//		}
+//		if !store.state.error.isEmpty,
+//		   store.state.isShowingError == false {
+//			Task {
+//				await store.dispatch(action: .presentError)
+//			}
+//		}
 	}
 
 	private class MyTextField: UITextField {
@@ -286,7 +263,7 @@ class ChatViewController: UIViewController, UIGestureRecognizerDelegate {
 
 // MARK: UITextFieldDelegate conformance
 
-extension ChatViewController: UITextFieldDelegate {
+extension ImageViewController: UITextFieldDelegate {
 
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		if string == "", textField.text?.isEmpty != nil {
@@ -300,26 +277,33 @@ extension ChatViewController: UITextFieldDelegate {
 
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		guard let chat = chat else {
-			fatalError("ChatViewController.textFieldShouldReturn: chat (store) is undefined")
+			fatalError("ImageViewController.textFieldShouldReturn: chat (store) is undefined")
 		}
 		guard chat.store.state.stream == nil, prompt.text != "" else { return false }
 		guard let prompt = textField.text else { return false }
 		spinner.isHidden = false
-		response.text = ""
-		Task {
-			if chat.store.state.api == nil {
-				guard let key = ChatAPI.apiKey else {
-					fatalError("ChatViewController.textFieldShouldReturn: failed to unwrap api key")
+		DispatchQueue.main.async {
+			guard let apiKey = UserDefaults.standard.object(forKey: "GPT3_API_KEY") as? String else {
+				fatalError("ImageViewController.textFieldShouldReturn: GPT3_API_KEY undefined")
+			}
+			let api = ImageGenAPI(key: apiKey)
+			api.fetchImage(prompt: prompt, store: chat.store) { (urlString, error) in
+				guard urlString.isEmpty == false else {
+					DispatchQueue.main.async {
+						self.spinner.isHidden = true
+						self.prompt.becomeFirstResponder()
+					}
+					return
 				}
-				await chat.store.dispatch(action: .setAPI(ChatAPI(key: key)))
+				let url = URL(string: urlString)
+				let data = try? Data(contentsOf: url!)
+				DispatchQueue.main.async {
+					print("\(urlString)")
+					self.imageView.image = UIImage(data: data!)
+					self.spinner.isHidden = true
+					self.prompt.becomeFirstResponder()
+				}
 			}
-			guard let api = chat.store.state.api else {
-				fatalError("ChatViewController.textFieldShouldReturn: failed to unwrap api")
-			}
-			let stream = try! await api.fetchResponseStream(prompt: prompt, store: chat.store)
-			await chat.store.dispatch(action: .setPrompt(prompt))
-			await chat.store.dispatch(action: .setStream(stream))
-			await chat.store.dispatch(action: .streamResponse(stream, ""))
 		}
 		textField.resignFirstResponder()
 		return true
@@ -332,12 +316,13 @@ extension ChatViewController: UITextFieldDelegate {
 
 //  MARK: UIViewControllerRepresentable wrapper
 
-struct ChatSwiftUIViewController : UIViewControllerRepresentable {
-	typealias UIViewControllerType = ChatViewController
+struct ImageSwiftUIViewController : UIViewControllerRepresentable {
+	typealias UIViewControllerType = ImageViewController
 	var router: ChatRouter
 	var chat: ChatStoreType
-	public func makeUIViewController(context: UIViewControllerRepresentableContext<ChatSwiftUIViewController>) -> ChatViewController {
-		return ChatViewController(router: router)
+	public func makeUIViewController(context: UIViewControllerRepresentableContext<ImageSwiftUIViewController>) -> ImageViewController {
+		return ImageViewController(router: router)
 	}
-	func updateUIViewController(_ uiViewController: ChatViewController, context: UIViewControllerRepresentableContext<ChatSwiftUIViewController>) { }
+	func updateUIViewController(_ uiViewController: ImageViewController, context: UIViewControllerRepresentableContext<ImageSwiftUIViewController>) { }
 }
+
